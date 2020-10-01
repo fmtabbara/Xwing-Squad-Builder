@@ -4,8 +4,18 @@ export type TFaction = {
   name: string;
   ffg: number;
   icon: string;
-  xws: string;
+  xws: EnumFactionXWS;
 };
+
+export enum EnumFactionXWS {
+  rebelalliance = "rebelalliance",
+  galacticempire = "galacticempire",
+  scumandvillainy = "scumandvillainy",
+  resistance = "resistance",
+  firstorder = "firstorder",
+  galacticrepublic = "galacticrepublic",
+  separatistalliance = "separatistalliance",
+}
 
 interface IAppContext {
   faction: TFaction | undefined;

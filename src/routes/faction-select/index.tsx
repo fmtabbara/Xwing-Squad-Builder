@@ -5,6 +5,7 @@ import { useIsMobile } from "../../hooks/useIsMobile";
 import { useRequest } from "../../hooks/useRequest";
 import { AppContext, TFaction } from "../../context";
 import { useHistory, useLocation } from "react-router-dom";
+import { FactionIcon } from "../../components/faction-icon";
 
 export const FactionSelect = () => {
   const {
@@ -52,16 +53,23 @@ const Faction = ({
   onSelect: (faction: TFaction) => void;
 }) => {
   const isMobile = useIsMobile();
-  const fIcon = <img src={faction.icon} height={30} />;
 
   return (
     <Button
       variant="contained"
       style={{ width: 225 }}
-      startIcon={!isMobile ? fIcon : undefined}
+      startIcon={
+        !isMobile ? (
+          <FactionIcon icon={faction.icon} xws={faction.xws} />
+        ) : undefined
+      }
       onClick={() => onSelect(faction)}
     >
-      {!isMobile ? faction.name : fIcon}
+      {!isMobile ? (
+        faction.name
+      ) : (
+        <FactionIcon icon={faction.icon} xws={faction.xws} />
+      )}
     </Button>
   );
 };

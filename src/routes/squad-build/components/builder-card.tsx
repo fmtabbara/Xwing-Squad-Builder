@@ -1,13 +1,10 @@
 import React, { useContext, useState } from "react";
-import {
-  Typography,
-  IconButton,
-  OutlinedInput,
-  ClickAwayListener,
-} from "@material-ui/core";
+import { Typography, IconButton } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
-import CheckIcon from "@material-ui/icons/Check";
+import { TextWithButton } from "../../../components/text-with-button";
+import { UpdateText } from "../../../components/update-text";
 import { AppContext } from "../../../context";
+import { FactionIcon } from "../../../components/faction-icon";
 
 export const BuilderCard = () => {
   const points = 0;
@@ -19,7 +16,15 @@ export const BuilderCard = () => {
 
   return (
     <>
-      <Typography variant="h3">{faction?.name}</Typography>
+      <TextWithButton>
+        {faction?.icon && <FactionIcon icon={faction.icon} xws={faction.xws} />}
+        <Typography
+          style={{ textTransform: "uppercase", fontWeight: 700 }}
+          variant="h6"
+        >
+          {faction?.name}
+        </Typography>
+      </TextWithButton>
       {showSquadNameInput ? (
         <UpdateText
           text={squadName}
@@ -35,7 +40,7 @@ export const BuilderCard = () => {
       ) : (
         <TextWithButton>
           <Typography variant="h4" style={{ margin: 16, marginRight: 4 }}>
-            {squadName}
+            {squadName?.toUpperCase()}
           </Typography>
           <IconButton onClick={() => setShowSquadNameInput(true)}>
             <EditIcon />
@@ -50,49 +55,5 @@ export const BuilderCard = () => {
         </span>
       </Typography>
     </>
-  );
-};
-
-const TextWithButton = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div style={{ display: "flex", alignItems: "center" }}>{children}</div>
-  );
-};
-
-const UpdateText = ({
-  text,
-  onClose,
-  onUpdate,
-}: {
-  text: string;
-  onClose: (currentText: string) => void;
-  onUpdate: (updatedText: string) => void;
-}) => {
-  const [value, setValue] = useState(text);
-
-  return (
-    <ClickAwayListener onClickAway={() => onClose(text)}>
-      <OutlinedInput
-        fullWidth
-        autoFocus
-        value={value}
-        onChange={({ target }) => {
-          setValue(target.value);
-        }}
-        onKeyDown={({ key }) => {
-          if (key.toLowerCase() === "enter") {
-            onUpdate(value);
-          }
-          if (key.toLowerCase() === "escape") {
-            onClose(text);
-          }
-        }}
-        endAdornment={
-          <IconButton color="primary" onClick={() => onUpdate(value)}>
-            <CheckIcon />
-          </IconButton>
-        }
-      />
-    </ClickAwayListener>
   );
 };
