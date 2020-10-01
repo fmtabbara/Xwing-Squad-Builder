@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Home } from "./routes/home";
+import { FactionSelect } from "./routes/faction-select";
+import CssBaseLine from "@material-ui/core/CssBaseline";
+import "./App.css";
+import { SquadBuild } from "./routes/squad-build";
+import { AppContextProvider } from "./context";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseLine />
+      <AppContextProvider>
+        <Router>
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/faction-select">
+              <FactionSelect />
+            </Route>
+            <Route path="/squad-build">
+              <SquadBuild />
+            </Route>
+          </Switch>
+        </Router>
+      </AppContextProvider>
+    </>
   );
 }
 
