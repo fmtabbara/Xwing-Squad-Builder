@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Page } from "../../components/page";
 import { Button, Grid, Typography } from "@material-ui/core";
-import { useIsMobile } from "../../hooks/useIsMobile";
 import { useRequest } from "../../hooks/useRequest";
 import { AppContext, TFaction } from "../../context";
 import { useHistory, useLocation } from "react-router-dom";
@@ -52,8 +51,6 @@ const Faction = ({
   faction: TFaction;
   onSelect: (faction: TFaction) => void;
 }) => {
-  const isMobile = useIsMobile();
-
   return (
     <Button
       size="small"
