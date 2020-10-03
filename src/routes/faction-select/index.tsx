@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Page } from "../../components/page";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useRequest } from "../../hooks/useRequest";
 import { AppContext, TFaction } from "../../context";
@@ -56,20 +56,14 @@ const Faction = ({
 
   return (
     <Button
-      variant="contained"
-      style={{ width: 225 }}
-      startIcon={
-        !isMobile ? (
-          <FactionIcon icon={faction.icon} xws={faction.xws} />
-        ) : undefined
-      }
+      size="small"
+      variant="text"
+      startIcon={<FactionIcon icon={faction.icon} xws={faction.xws} />}
       onClick={() => onSelect(faction)}
     >
-      {!isMobile ? (
-        faction.name
-      ) : (
-        <FactionIcon icon={faction.icon} xws={faction.xws} />
-      )}
+      <Typography variant="caption" style={{ width: 150, textAlign: "left" }}>
+        {faction.name}
+      </Typography>
     </Button>
   );
 };
