@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Typography, IconButton } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import { TextWithButton } from "../../../components/text-with-button";
 import { UpdateText } from "../../../components/update-text";
-import { AppContext } from "../../../context";
-import { FactionIcon } from "../../../components/faction-icon";
 
 export const BuilderCard = () => {
   const points = 0;
@@ -12,19 +10,8 @@ export const BuilderCard = () => {
   const [squadName, setSquadName] = useState("Squad Name");
   const [showSquadNameInput, setShowSquadNameInput] = useState(false);
 
-  const { faction } = useContext(AppContext);
-
   return (
     <>
-      <TextWithButton>
-        {faction?.icon && <FactionIcon icon={faction.icon} xws={faction.xws} />}
-        <Typography
-          style={{ textTransform: "uppercase", fontWeight: 700 }}
-          variant="h6"
-        >
-          {faction?.name}
-        </Typography>
-      </TextWithButton>
       {showSquadNameInput ? (
         <UpdateText
           text={squadName}

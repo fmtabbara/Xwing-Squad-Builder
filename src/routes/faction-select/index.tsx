@@ -35,8 +35,8 @@ export const FactionSelect = () => {
       >
         {isLoading && <div>Loading..</div>}
         {factions.map((f, index: number) => (
-          <Grid item>
-            <Faction key={index} faction={f} onSelect={handleSelect} />
+          <Grid item key={index}>
+            <Faction faction={f} onSelect={handleSelect} />
           </Grid>
         ))}
       </Grid>
@@ -58,7 +58,10 @@ const Faction = ({
       startIcon={<FactionIcon icon={faction.icon} xws={faction.xws} />}
       onClick={() => onSelect(faction)}
     >
-      <Typography variant="caption" style={{ width: 150, textAlign: "left" }}>
+      <Typography
+        variant="h6"
+        style={{ width: 225, textAlign: "left", fontWeight: 700 }}
+      >
         {faction.name}
       </Typography>
     </Button>

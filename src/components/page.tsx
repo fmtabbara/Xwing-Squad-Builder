@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 export const Page = ({ children }: { children: any }) => {
   const classes = useStyles();
   return (
-    <Container disableGutters fixed className={classes.page}>
+    <Container className={classes.page}>
       <Grid container direction="column" spacing={1}>
         <Grid item style={{ margin: 16 }}>
           <Logo />
