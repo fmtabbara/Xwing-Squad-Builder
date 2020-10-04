@@ -40,7 +40,8 @@ export const AddPilotDialog = ({
       <DialogContent>
         <List>
           {selectedShip?.pilots.map((p) => (
-            <ListItem button>
+            <ListItem button key={p.name}>
+              {console.log(p)}
               <ListItemText>{p.name}</ListItemText>
             </ListItem>
           ))}
