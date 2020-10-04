@@ -36,6 +36,7 @@ export type TShip = {
   pilots: Array<TPilot>;
   size: EnumShipSize;
   stats: any[]; // Needs populating
+  xws: string;
 };
 
 type TPilot = {

@@ -6,7 +6,6 @@ import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { TShip } from "../context";
-import "../assets/xwing-miniatures.css";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -42,7 +41,6 @@ export const AddPilotDialog = ({
         <List>
           {selectedShip?.pilots.map((p) => (
             <ListItem button key={p.name}>
-              <i className="xwing-miniatures-font xwing-miniatures-font-turnright"></i>
               <ListItemText>{p.name}</ListItemText>
             </ListItem>
           ))}
