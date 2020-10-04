@@ -20,6 +20,7 @@ export const UpdateText = ({
   return (
     <ClickAwayListener onClickAway={() => onClose(text)}>
       <OutlinedInput
+        style={{ background: "white" }}
         fullWidth
         autoFocus
         value={value}
