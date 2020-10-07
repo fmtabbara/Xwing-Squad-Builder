@@ -5,20 +5,23 @@ import CssBaseLine from "@material-ui/core/CssBaseline";
 import { SquadBuild } from "./routes/squad-build";
 import { AppContextProvider } from "./context";
 import "./App.css";
+import { Theme } from "./theme";
 
 function App() {
   return (
     <>
       <CssBaseLine />
       <AppContextProvider>
-        <Switch>
-          <Route path="/faction-select">
-            <FactionSelect />
-          </Route>
-          <Route path="/squad-build">
-            <SquadBuild />
-          </Route>
-        </Switch>
+        <Theme>
+          <Switch>
+            <Route path="/faction-select">
+              <FactionSelect />
+            </Route>
+            <Route path="/squad-build">
+              <SquadBuild />
+            </Route>
+          </Switch>
+        </Theme>
       </AppContextProvider>
     </>
   );

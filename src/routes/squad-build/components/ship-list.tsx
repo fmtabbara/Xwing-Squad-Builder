@@ -7,7 +7,7 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
   const [ships, setShips] = useState<TShip[]>([]);
   const [shipsLoading, setShipsLoading] = useState(true);
 
-  const { manifestUrls, addPilot } = useContext(AppContext);
+  const { manifestUrls, showPilotsList } = useContext(AppContext);
 
   const pilots = manifestUrls.pilots.find((u: any) => u.faction === faction);
 
@@ -37,12 +37,13 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
           maxHeight: 700,
           overflow: "auto",
         }}
+        dense
       >
         {ships.map((ship) => (
           <ListItem
             key={ship.name}
             button
-            onClick={() => addPilot(ship)}
+            onClick={() => showPilotsList(ship)}
             style={{ color: "white", margin: 8 }}
           >
             <ListItemIcon>

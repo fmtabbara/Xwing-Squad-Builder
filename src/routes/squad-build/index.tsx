@@ -7,12 +7,10 @@ import { ShipList } from "./components/ship-list";
 import { TextWithButton } from "../../components/text-with-button";
 import { FactionIcon } from "../../components/faction-icon";
 import { Redirect, useLocation } from "react-router-dom";
-import { AddPilotDialog } from "../../components/AddPilot";
+import { PilotList } from "./components/pilot-list";
 
 export const SquadBuild = () => {
-  const { faction, selectedShip, handleCloseAddPilotDialog } = useContext(
-    AppContext
-  );
+  const { faction, ship, closePilotsList } = useContext(AppContext);
 
   const location = useLocation();
 
@@ -23,14 +21,14 @@ export const SquadBuild = () => {
   if (faction) {
     return (
       <Page>
-        <AddPilotDialog
-          open={selectedShip ? true : false}
-          selectedShip={selectedShip}
+        <PilotList
+          open={ship ? true : false}
+          ship={ship}
           onAdd={() => {}}
-          onClose={handleCloseAddPilotDialog}
+          onClose={closePilotsList}
         />
         <Grid container wrap="nowrap" spacing={2}>
-          <Grid item container xs={2}>
+          <Grid item container style={{ width: 325, minWidth: 325 }}>
             <Grid item>
               <TextWithButton>
                 <FactionIcon icon={faction.icon} xws={faction.xws} />
@@ -44,7 +42,7 @@ export const SquadBuild = () => {
             </Grid>
             <Grid item>{faction && <ShipList faction={faction.xws} />}</Grid>
           </Grid>
-          <Grid item xs={10} style={{ marginTop: 56 }}>
+          <Grid item style={{ marginTop: 56, width: "100%" }}>
             <BuilderCard />
           </Grid>
         </Grid>

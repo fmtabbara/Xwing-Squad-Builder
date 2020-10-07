@@ -39,9 +39,11 @@ export type TShip = {
   xws: string;
 };
 
-type TPilot = {
+export type TPilot = {
   artwork: string;
-  cost: number;
+  ability: string;
+  caption: string;
+  cost: number | undefined;
   ffg: number;
   hyperspace: boolean;
   image: string;
@@ -85,9 +87,9 @@ interface IAppContext {
   manifestUrls: any;
   faction: TFaction | undefined;
   setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>;
-  selectedShip: any;
-  addPilot: (ship: any) => void;
-  handleCloseAddPilotDialog: () => void;
+  ship: any;
+  showPilotsList: (ship: any) => void;
+  closePilotsList: () => void;
 }
 
 export const AppContext = createContext({} as IAppContext);
@@ -98,25 +100,25 @@ export const AppContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [faction, setFaction] = useState<TFaction | undefined>();
-  const [selectedShip, setSelectedShip] = useState<TShip>();
+  const [ship, setShip] = useState<TShip>();
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
     "/manifest.json"
   );
 
-  const addPilot = (ship: any) => setSelectedShip(ship);
-  const handleCloseAddPilotDialog = () => setSelectedShip(undefined);
+  const showPilotsList = (ship: any) => setShip(ship);
+  const closePilotsList = () => setShip(undefined);
 
   return (
     <AppContext.Provider
       value={{
         faction,
+        ship,
         setFaction,
         manifestUrls,
         manifestUrlsLoading,
-        addPilot,
-        selectedShip,
-        handleCloseAddPilotDialog,
+        showPilotsList,
+        closePilotsList,
       }}
     >
       {children}
