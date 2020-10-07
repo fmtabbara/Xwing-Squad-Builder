@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  IconButton,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
+import { Card, CardHeader, makeStyles, Typography } from "@material-ui/core";
+
 import { TPilot } from "../../../context";
 
 const useCardStyle = makeStyles((theme) => ({
@@ -57,11 +51,6 @@ export const PilotCard = ({ pilot }: { pilot: TPilot }) => {
           },
         }}
         subheader={pilot.caption}
-        action={
-          <IconButton>
-            <CloseIcon />
-          </IconButton>
-        }
       />
     </Card>
   );

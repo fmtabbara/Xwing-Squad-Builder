@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ListItem, ListItemText, List, ListItemIcon } from "@material-ui/core";
 import { AppContext, EnumFactionXWS, TShip } from "../../../context";
-import { Icon } from "../../../components/Icon";
+import { XIcon } from "../../../components/Icon";
 
 export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
   const [ships, setShips] = useState<TShip[]>([]);
@@ -47,7 +47,7 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
             style={{ color: "white", margin: 8 }}
           >
             <ListItemIcon>
-              <Icon type="ship" icon={ship.xws} size="md" color="white" />
+              <XIcon type="ship" icon={ship.xws} size="md" color="white" />
             </ListItemIcon>
             <ListItemText>{ship.name.toUpperCase()}</ListItemText>
           </ListItem>

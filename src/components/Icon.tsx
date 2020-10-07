@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/xwing-miniatures.css";
 
-export const Icon = ({
+export const XIcon = ({
   type,
   icon,
   size,

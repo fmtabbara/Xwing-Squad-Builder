@@ -6,7 +6,16 @@ import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { TShip } from "../../../context";
 import { PilotCard } from "./pilot-card";
-import { Button, DialogActions, Grid } from "@material-ui/core";
+import {
+  Button,
+  DialogActions,
+  Grid,
+  Theme,
+  Typography,
+} from "@material-ui/core";
+import { XIcon } from "../../../components/Icon";
+import { makeStyles } from "@material-ui/styles";
+import classes from "*.module.css";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -14,6 +23,18 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
+
+const useDialogStyles = makeStyles((theme: Theme) => ({
+  title: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: theme.spacing(0, 3),
+  },
+  content: {
+    background: theme.palette.grey[100],
+  },
+}));
 
 export const PilotList = ({
   ship,
@@ -26,7 +47,8 @@ export const PilotList = ({
   onAdd: () => void;
   onClose: () => void;
 }) => {
-  console.log(ship);
+  const classes = useDialogStyles();
+
   return (
     <Dialog
       open={open}
@@ -38,8 +60,11 @@ export const PilotList = ({
       maxWidth="md"
       fullWidth
     >
-      <DialogTitle id="alert-dialog-slide-title">{ship?.name}</DialogTitle>
-      <DialogContent>
+      <DialogTitle disableTypography className={classes.title}>
+        <Typography>{ship?.name}</Typography>
+        <XIcon type="ship" icon={ship?.xws || ""} size="md" color="black" />
+      </DialogTitle>
+      <DialogContent dividers className={classes.content}>
         <Grid container spacing={2} direction="column">
           {ship?.pilots.map((p) => (
             <Grid item xs={12}>
