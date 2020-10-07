@@ -3,17 +3,17 @@
  * Icons
  */
 @font-face {
-  font-family: XWing;
+  font-family: XWingFont;
   src: url("xwing-miniatures.ttf");
 }
 
 @font-face {
-  font-family: XWing;
+  font-family: XWingShip;
   src: url("xwing-miniatures-ships.ttf");
 }
 
 i.xwing-miniatures-font {
-  font-family: XWing;
+  font-family: XWingFont;
   font-style: normal;
   font-size: 1.5em;
 }

@@ -14,7 +14,7 @@ export const XIcon = ({
   color?: string;
   style?: {};
 }) => {
-  const iconSize = size === "md" ? "3.5em" : size === "lg" ? "5em" : "1.5em";
+  const iconSize = size === "md" ? "3.5em" : size === "lg" ? "5em" : "2em";
   return (
     <i
       style={{ ...style, fontSize: iconSize, color }}

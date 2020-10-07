@@ -1,7 +1,14 @@
 import React from "react";
-import { Card, CardHeader, makeStyles, Typography } from "@material-ui/core";
-
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
+import stringReplace from "react-string-replace";
 import { TPilot } from "../../../context";
+import { XIcon } from "../../../components/Icon";
 
 const useCardStyle = makeStyles((theme) => ({
   headerStyle: {
@@ -17,9 +24,14 @@ const useCardStyle = makeStyles((theme) => ({
   },
 }));
 
+const ability = (ability: string) =>
+  stringReplace(ability, /\[(.*?)\]/, (match, i) => (
+    <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
+  ));
+
 export const PilotCard = ({ pilot }: { pilot: TPilot }) => {
   const classes = useCardStyle();
-
+  console.log(pilot);
   return (
     <Card variant="outlined">
       <CardHeader
@@ -52,6 +64,9 @@ export const PilotCard = ({ pilot }: { pilot: TPilot }) => {
         }}
         subheader={pilot.caption}
       />
+      <CardContent>
+        <Typography variant="caption">{ability(pilot.ability)}</Typography>
+      </CardContent>
     </Card>
   );
 };
