@@ -92,6 +92,7 @@ interface IAppContext {
   showPilotsList: (ship: any) => void;
   closePilotsList: () => void;
   addSquadPilot: (pilot: TPilot) => void;
+  removeSquadPilot: (pilotName: TPilot["name"]) => void;
 }
 
 export const AppContext = createContext({} as IAppContext);
@@ -117,6 +118,9 @@ export const AppContextProvider = ({
     closePilotsList();
   };
 
+  const removeSquadPilot = (pilotName: TPilot["name"]) =>
+    setSquad((s) => s.filter((p) => p.name !== pilotName));
+
   return (
     <AppContext.Provider
       value={{
@@ -129,6 +133,7 @@ export const AppContextProvider = ({
         showPilotsList,
         closePilotsList,
         addSquadPilot,
+        removeSquadPilot,
       }}
     >
       {children}

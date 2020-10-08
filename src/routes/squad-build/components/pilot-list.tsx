@@ -15,7 +15,6 @@ import {
 } from "@material-ui/core";
 import { XIcon } from "../../../components/Icon";
 import { makeStyles } from "@material-ui/styles";
-import classes from "*.module.css";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -32,7 +31,7 @@ const useDialogStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0, 3),
   },
   content: {
-    background: theme.palette.grey[100],
+    background: theme.palette.grey[200],
   },
 }));
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { FactionSelect } from "./routes/faction-select";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import { SquadBuild } from "./routes/squad-build";
@@ -19,6 +19,9 @@ function App() {
             </Route>
             <Route path="/squad-build">
               <SquadBuild />
+            </Route>
+            <Route path="/">
+              <Redirect to="/faction-select" />
             </Route>
           </Switch>
         </Theme>

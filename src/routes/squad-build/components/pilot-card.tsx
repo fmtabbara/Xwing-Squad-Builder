@@ -1,16 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
+import stringReplace from "react-string-replace";
+import clsx from "clsx";
 import {
   Card,
   CardContent,
   CardHeader,
+  IconButton,
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import stringReplace from "react-string-replace";
-import { AppContext, TPilot } from "../../../context";
+import { TPilot } from "../../../context";
 import { XIcon } from "../../../components/Icon";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useCardStyle = makeStyles((theme) => ({
+  root: {
+    "&:hover": {
+      cursor: "pointer",
+      background: theme.palette.grey[100],
+    },
+  },
   headerStyle: {
     alignItems: "flex-start",
   },
@@ -25,21 +34,27 @@ const useCardStyle = makeStyles((theme) => ({
 }));
 
 const ability = (ability: string) =>
-  stringReplace(ability, /\[(.*?)\]/, (match, i) => (
+  stringReplace(ability, /\[(.*?)\]/, (match) => (
     <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
   ));
 
 export const PilotCard = ({
   pilot,
   onAddPilot,
+  onRemovePilot,
 }: {
   pilot: TPilot;
   onAddPilot?: (pilot: TPilot) => void;
+  onRemovePilot?: (pilot: string) => void;
 }) => {
   const classes = useCardStyle();
 
   return (
-    <Card variant="outlined" onClick={() => onAddPilot?.(pilot)}>
+    <Card
+      variant="outlined"
+      onClick={() => onAddPilot?.(pilot)}
+      className={clsx({ [classes.root]: onAddPilot })}
+    >
       <CardHeader
         title={
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -69,6 +84,13 @@ export const PilotCard = ({
           },
         }}
         subheader={pilot.caption}
+        action={
+          onRemovePilot && (
+            <IconButton onClick={() => onRemovePilot(pilot.name)}>
+              <CloseIcon />
+            </IconButton>
+          )
+        }
       />
       <CardContent>
         <Typography variant="caption">{ability(pilot.ability)}</Typography>

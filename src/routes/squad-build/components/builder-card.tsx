@@ -13,7 +13,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import { TextWithButton } from "../../../components/text-with-button";
 import { UpdateText } from "../../../components/update-text";
 import { AppContext } from "../../../context";
-import { PilotCard } from "./pilot-card";
+import { SquadList } from "./squad.list";
 
 const useBuilderCardStyle = makeStyles((theme: Theme) => ({
   root: {
@@ -39,13 +39,7 @@ export const BuilderCard = () => {
         }
       />
       <CardContent className={classes.root}>
-        <Grid container direction="column" spacing={2}>
-          {squad.map((s) => (
-            <Grid item>
-              <PilotCard pilot={s} />
-            </Grid>
-          ))}
-        </Grid>
+        <SquadList squad={squad} />
       </CardContent>
     </Card>
   );
