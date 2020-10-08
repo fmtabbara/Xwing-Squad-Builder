@@ -18,7 +18,7 @@ import { SquadList } from "./squad.list";
 const useBuilderCardStyle = makeStyles((theme: Theme) => ({
   root: {
     maxHeight: 700,
-    overflow: "auto",
+    overflowY: "auto",
   },
   header: { padding: 0, background: theme.palette.grey[200] },
 }));

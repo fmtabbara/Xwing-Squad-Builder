@@ -31,25 +31,21 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
     return (
       <List
         style={{
-          background: "#123456",
-          borderTopLeftRadius: 8,
-          WebkitBorderBottomLeftRadius: 8,
           maxHeight: 700,
-          overflow: "auto",
+          overflowX: "hidden",
+          border: "1px solid #eee",
+          background: "white",
         }}
         dense
       >
         {ships.map((ship) => (
-          <ListItem
-            key={ship.name}
-            button
-            onClick={() => showPilotsList(ship)}
-            style={{ color: "white", margin: 8 }}
-          >
+          <ListItem key={ship.name} button onClick={() => showPilotsList(ship)}>
             <ListItemIcon>
-              <XIcon type="ship" icon={ship.xws} size="md" color="white" />
+              <XIcon type="ship" icon={ship.xws} size="md" color="black" />
             </ListItemIcon>
-            <ListItemText>{ship.name.toUpperCase()}</ListItemText>
+            <ListItemText style={{ color: "black" }}>
+              {ship.name.toUpperCase()}
+            </ListItemText>
           </ListItem>
         ))}
       </List>

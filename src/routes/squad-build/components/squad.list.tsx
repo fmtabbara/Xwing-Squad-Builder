@@ -6,9 +6,9 @@ import { AppContext, TPilot } from "../../../context";
 export const SquadList = ({ squad }: { squad: TPilot[] }) => {
   const { removeSquadPilot } = useContext(AppContext);
   return (
-    <Grid container direction="column" spacing={2}>
+    <Grid container spacing={2}>
       {squad.map((s) => (
-        <Grid item>
+        <Grid item sm={12}>
           <PilotCard pilot={s} onRemovePilot={removeSquadPilot} />
         </Grid>
       ))}

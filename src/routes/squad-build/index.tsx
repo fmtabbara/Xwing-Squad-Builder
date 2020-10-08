@@ -8,6 +8,7 @@ import { TextWithButton } from "../../components/text-with-button";
 import { FactionIcon } from "../../components/faction-icon";
 import { Redirect, useLocation } from "react-router-dom";
 import { PilotList } from "./components/pilot-list";
+import { SwipeableTemporaryDrawer } from "../../components/side-bar";
 
 export const SquadBuild = () => {
   const { faction, ship, closePilotsList } = useContext(AppContext);
