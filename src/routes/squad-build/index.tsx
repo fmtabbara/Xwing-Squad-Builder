@@ -27,22 +27,20 @@ export const SquadBuild = () => {
           onAdd={() => {}}
           onClose={closePilotsList}
         />
+        <TextWithButton>
+          <FactionIcon icon={faction.icon} xws={faction.xws} />
+          <Typography
+            variant="body1"
+            style={{ width: 200, textAlign: "left", fontWeight: 700 }}
+          >
+            {faction.name.toUpperCase()}
+          </Typography>
+        </TextWithButton>
         <Grid container wrap="nowrap" spacing={2}>
-          <Grid item container style={{ width: 325, minWidth: 325 }}>
-            <Grid item>
-              <TextWithButton>
-                <FactionIcon icon={faction.icon} xws={faction.xws} />
-                <Typography
-                  variant="body1"
-                  style={{ width: 200, textAlign: "left", fontWeight: 700 }}
-                >
-                  {faction.name.toUpperCase()}
-                </Typography>
-              </TextWithButton>
-            </Grid>
-            <Grid item>{faction && <ShipList faction={faction.xws} />}</Grid>
+          <Grid item style={{ width: 325, minWidth: 325 }}>
+            {faction && <ShipList faction={faction.xws} />}
           </Grid>
-          <Grid item style={{ marginTop: 56, width: "100%" }}>
+          <Grid item style={{ width: "100%" }}>
             <BuilderCard />
           </Grid>
         </Grid>

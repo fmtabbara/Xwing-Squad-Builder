@@ -5,11 +5,11 @@ import { Logo } from "./logo";
 export const Page = ({ children }: { children: any }) => {
   return (
     <Grid container direction="column">
-      <Grid item style={{ margin: 16 }}>
+      <Grid item style={{ height: 75, margin: 16, marginBottom: 0 }}>
         <Logo />
       </Grid>
-      <Grid>
-        <div style={{ padding: 8 }}>{children}</div>
+      <Grid item style={{ padding: 8 }}>
+        {children}
       </Grid>
     </Grid>
   );
