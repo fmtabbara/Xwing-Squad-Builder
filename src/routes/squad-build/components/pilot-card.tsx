@@ -93,6 +93,11 @@ export const PilotCard = ({
         }
       />
       <CardContent>
+        {pilot.shipXWS && (
+          <div>
+            <XIcon type="ship" icon={pilot.shipXWS} size="md" />
+          </div>
+        )}
         <Typography variant="caption">{ability(pilot.ability)}</Typography>
       </CardContent>
     </Card>

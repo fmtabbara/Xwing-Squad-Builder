@@ -53,9 +53,8 @@ export type TPilot = {
   shipAbility: { name: string; text: string } | undefined;
   slots: string[];
   xws: string;
+  shipXWS?: string;
 };
-
-export type TSquadPilot = TPilot & { shipXWS: TShip["xws"] };
 
 export type TFaction = {
   name: string;
@@ -106,7 +105,7 @@ export const AppContextProvider = ({
 }) => {
   const [faction, setFaction] = useState<TFaction | undefined>();
   const [ship, setShip] = useState<TShip>();
-  const [squad, setSquad] = useState<TSquadPilot[]>([]);
+  const [squad, setSquad] = useState<TPilot[]>([]);
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
     "/manifest.json"
