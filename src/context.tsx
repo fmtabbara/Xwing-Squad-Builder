@@ -86,10 +86,12 @@ interface IAppContext {
   manifestUrlsLoading: boolean;
   manifestUrls: any;
   faction: TFaction | undefined;
-  setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>;
   ship: any;
+  squad: TPilot[];
+  setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>;
   showPilotsList: (ship: any) => void;
   closePilotsList: () => void;
+  addSquadPilot: (pilot: TPilot) => void;
 }
 
 export const AppContext = createContext({} as IAppContext);
@@ -101,6 +103,7 @@ export const AppContextProvider = ({
 }) => {
   const [faction, setFaction] = useState<TFaction | undefined>();
   const [ship, setShip] = useState<TShip>();
+  const [squad, setSquad] = useState<TPilot[]>([]);
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
     "/manifest.json"
@@ -109,16 +112,23 @@ export const AppContextProvider = ({
   const showPilotsList = (ship: any) => setShip(ship);
   const closePilotsList = () => setShip(undefined);
 
+  const addSquadPilot = (pilot: TPilot) => {
+    setSquad((s) => [...s, pilot]);
+    closePilotsList();
+  };
+
   return (
     <AppContext.Provider
       value={{
         faction,
         ship,
-        setFaction,
+        squad,
         manifestUrls,
         manifestUrlsLoading,
+        setFaction,
         showPilotsList,
         closePilotsList,
+        addSquadPilot,
       }}
     >
       {children}

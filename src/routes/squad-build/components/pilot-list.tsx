@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
-import { TShip } from "../../../context";
+import { AppContext, TShip } from "../../../context";
 import { PilotCard } from "./pilot-card";
 import {
   Button,
@@ -48,7 +48,7 @@ export const PilotList = ({
   onClose: () => void;
 }) => {
   const classes = useDialogStyles();
-
+  const { addSquadPilot } = useContext(AppContext);
   return (
     <Dialog
       open={open}
@@ -68,7 +68,7 @@ export const PilotList = ({
         <Grid container spacing={2} direction="column">
           {ship?.pilots.map((p) => (
             <Grid item xs={12}>
-              <PilotCard pilot={p} />
+              <PilotCard pilot={p} onAddPilot={addSquadPilot} />
             </Grid>
           ))}
         </Grid>

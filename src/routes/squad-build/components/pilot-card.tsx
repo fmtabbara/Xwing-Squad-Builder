@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardContent,
@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import stringReplace from "react-string-replace";
-import { TPilot } from "../../../context";
+import { AppContext, TPilot } from "../../../context";
 import { XIcon } from "../../../components/Icon";
 
 const useCardStyle = makeStyles((theme) => ({
@@ -29,11 +29,17 @@ const ability = (ability: string) =>
     <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
   ));
 
-export const PilotCard = ({ pilot }: { pilot: TPilot }) => {
+export const PilotCard = ({
+  pilot,
+  onAddPilot,
+}: {
+  pilot: TPilot;
+  onAddPilot?: (pilot: TPilot) => void;
+}) => {
   const classes = useCardStyle();
-  console.log(pilot);
+
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" onClick={() => onAddPilot?.(pilot)}>
       <CardHeader
         title={
           <div style={{ display: "flex", alignItems: "center" }}>
