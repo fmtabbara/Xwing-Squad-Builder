@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardContent,
   makeStyles,
-  Grid,
   Theme,
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
@@ -14,6 +13,7 @@ import { TextWithButton } from "../../../components/text-with-button";
 import { UpdateText } from "../../../components/update-text";
 import { AppContext } from "../../../context";
 import { SquadList } from "./squad.list";
+import { Alert } from "@material-ui/lab";
 
 const useBuilderCardStyle = makeStyles((theme: Theme) => ({
   root: {
@@ -39,6 +39,11 @@ export const BuilderCard = () => {
         }
       />
       <CardContent className={classes.root}>
+        {squad.length === 0 && (
+          <Alert style={{ margin: 8 }} severity="info">
+            No squad pilots selected
+          </Alert>
+        )}
         <SquadList squad={squad} />
       </CardContent>
     </Card>

@@ -27,7 +27,7 @@ const useDialogStyles = makeStyles((theme: Theme) => ({
   title: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     padding: theme.spacing(0, 3),
   },
   content: {
@@ -64,7 +64,15 @@ export const PilotList = ({
       fullWidth
     >
       <DialogTitle disableTypography className={classes.title}>
-        <Typography>{ship?.name}</Typography>
+        <Typography
+          style={{
+            fontWeight: 700,
+            textTransform: "uppercase",
+            marginRight: 8,
+          }}
+        >
+          {ship?.name}
+        </Typography>
         <XIcon type="ship" icon={ship?.xws || ""} size="md" color="black" />
       </DialogTitle>
       <DialogContent dividers className={classes.content}>

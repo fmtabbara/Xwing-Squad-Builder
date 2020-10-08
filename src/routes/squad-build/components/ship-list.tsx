@@ -40,8 +40,8 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
       >
         {ships.map((ship) => (
           <ListItem key={ship.name} button onClick={() => showPilotsList(ship)}>
-            <ListItemIcon>
-              <XIcon type="ship" icon={ship.xws} size="md" color="black" />
+            <ListItemIcon style={{ marginRight: 8 }}>
+              <XIcon type="ship" icon={ship.xws} size="lg" color="black" />
             </ListItemIcon>
             <ListItemText style={{ color: "black" }}>
               {ship.name.toUpperCase()}
