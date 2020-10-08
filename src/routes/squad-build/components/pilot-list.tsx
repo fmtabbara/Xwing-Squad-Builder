@@ -4,7 +4,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
-import { AppContext, TShip } from "../../../context";
+import { AppContext, TPilot, TShip } from "../../../context";
 import { PilotCard } from "./pilot-card";
 import {
   Button,
@@ -38,7 +38,6 @@ const useDialogStyles = makeStyles((theme: Theme) => ({
 export const PilotList = ({
   ship,
   open,
-  onAdd,
   onClose,
 }: {
   ship: TShip | undefined;
@@ -48,6 +47,11 @@ export const PilotList = ({
 }) => {
   const classes = useDialogStyles();
   const { addSquadPilot } = useContext(AppContext);
+
+  const onAddPilot = (shipWXS: TShip["xws"]) => (pilot: TPilot) =>
+    addSquadPilot(pilot, shipWXS);
+  const partialAddPilot = onAddPilot(ship?.xws!);
+
   return (
     <Dialog
       open={open}
@@ -67,7 +71,7 @@ export const PilotList = ({
         <Grid container spacing={2} direction="column">
           {ship?.pilots.map((p) => (
             <Grid item xs={12}>
-              <PilotCard pilot={p} onAddPilot={addSquadPilot} />
+              <PilotCard pilot={p} onAddPilot={partialAddPilot} />
             </Grid>
           ))}
         </Grid>

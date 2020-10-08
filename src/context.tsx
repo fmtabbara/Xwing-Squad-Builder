@@ -55,6 +55,8 @@ export type TPilot = {
   xws: string;
 };
 
+export type TSquadPilot = TPilot & { shipXWS: TShip["xws"] };
+
 export type TFaction = {
   name: string;
   ffg: number;
@@ -91,7 +93,7 @@ interface IAppContext {
   setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>;
   showPilotsList: (ship: any) => void;
   closePilotsList: () => void;
-  addSquadPilot: (pilot: TPilot) => void;
+  addSquadPilot: (pilot: TPilot, shipXWS: TShip["xws"]) => void;
   removeSquadPilot: (pilotName: TPilot["name"]) => void;
 }
 
@@ -104,7 +106,7 @@ export const AppContextProvider = ({
 }) => {
   const [faction, setFaction] = useState<TFaction | undefined>();
   const [ship, setShip] = useState<TShip>();
-  const [squad, setSquad] = useState<TPilot[]>([]);
+  const [squad, setSquad] = useState<TSquadPilot[]>([]);
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
     "/manifest.json"
@@ -113,8 +115,8 @@ export const AppContextProvider = ({
   const showPilotsList = (ship: any) => setShip(ship);
   const closePilotsList = () => setShip(undefined);
 
-  const addSquadPilot = (pilot: TPilot) => {
-    setSquad((s) => [...s, pilot]);
+  const addSquadPilot = (pilot: TPilot, shipXWS: TShip["xws"]) => {
+    setSquad((s) => [...s, { ...pilot, shipXWS }]);
     closePilotsList();
   };
 
