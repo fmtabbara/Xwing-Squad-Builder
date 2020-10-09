@@ -1,5 +1,7 @@
-import React from "react";
-import { EnumFactionXWS } from "../context";
+import { Typography } from "@material-ui/core";
+import React, { useContext } from "react";
+import { AppContext, EnumFactionXWS } from "../context";
+import { TextWithButton } from "./text-with-button";
 
 const withBlackBg = [
   EnumFactionXWS.scumandvillainy,
@@ -10,9 +12,11 @@ const withBlackBg = [
 export const FactionIcon = ({
   icon,
   xws,
+  small,
 }: {
   icon: string;
   xws: EnumFactionXWS;
+  small?: boolean;
 }) => {
   const blackBg = withBlackBg.includes(xws);
   return (
@@ -20,12 +24,32 @@ export const FactionIcon = ({
       src={icon}
       alt="faction-icon"
       style={{
-        width: 35,
+        width: small ? 25 : 35,
         background: blackBg ? "black" : "#ddd",
-        margin: 10,
-        padding: 5,
+        marginRight: 8,
+        padding: 4,
         borderRadius: 30,
       }}
     />
   );
+};
+
+export const FactionLabel = ({ small }: { small?: boolean }) => {
+  const { faction } = useContext(AppContext);
+  if (faction) {
+    return (
+      <TextWithButton>
+        <FactionIcon icon={faction.icon} xws={faction.xws} small={small} />
+        <Typography
+          component="div"
+          style={{
+            fontWeight: small ? 500 : 700,
+          }}
+        >
+          {faction.name.toUpperCase()}
+        </Typography>
+      </TextWithButton>
+    );
+  }
+  return <></>;
 };

@@ -14,6 +14,7 @@ import { UpdateText } from "../../../components/update-text";
 import { AppContext } from "../../../context";
 import { SquadList } from "./squad.list";
 import { Alert } from "@material-ui/lab";
+import { FactionIcon } from "../../../components/faction-icon";
 
 const useBuilderCardStyle = makeStyles((theme: Theme) => ({
   root: {
@@ -54,29 +55,33 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
   const total = 200;
   const [squadName, setSquadName] = useState("Squad Name");
   const [showSquadNameInput, setShowSquadNameInput] = useState(false);
+  const { faction } = useContext(AppContext);
 
   return (
     <div style={{ padding: 16 }}>
-      {showSquadNameInput ? (
-        <UpdateText
-          text={squadName}
-          onClose={(currentSquadName) => {
-            setSquadName(currentSquadName);
-            setShowSquadNameInput(false);
-          }}
-          onUpdate={(updatedValue) => {
-            setSquadName(updatedValue);
-            setShowSquadNameInput(false);
-          }}
-        />
-      ) : (
-        <TextWithButton>
-          <Typography variant="h5">{squadName?.toUpperCase()}</Typography>
-          <IconButton onClick={() => setShowSquadNameInput(true)}>
-            <EditIcon />
-          </IconButton>
-        </TextWithButton>
-      )}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <FactionIcon icon={faction!.icon} xws={faction!.xws} />
+        {showSquadNameInput ? (
+          <UpdateText
+            text={squadName}
+            onClose={(currentSquadName) => {
+              setSquadName(currentSquadName);
+              setShowSquadNameInput(false);
+            }}
+            onUpdate={(updatedValue) => {
+              setSquadName(updatedValue);
+              setShowSquadNameInput(false);
+            }}
+          />
+        ) : (
+          <TextWithButton>
+            <Typography variant="h5">{squadName?.toUpperCase()}</Typography>
+            <IconButton onClick={() => setShowSquadNameInput(true)}>
+              <EditIcon />
+            </IconButton>
+          </TextWithButton>
+        )}
+      </div>
 
       <Typography variant="caption" color="primary">
         <span

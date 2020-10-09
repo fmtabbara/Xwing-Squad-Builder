@@ -57,11 +57,9 @@ const Faction = ({
       variant="text"
       startIcon={<FactionIcon icon={faction.icon} xws={faction.xws} />}
       onClick={() => onSelect(faction)}
+      style={{ padding: 16 }}
     >
-      <Typography
-        variant="h6"
-        style={{ width: 225, textAlign: "left", fontWeight: 700 }}
-      >
+      <Typography variant="h6" style={{ fontWeight: 700 }}>
         {faction.name}
       </Typography>
     </Button>
