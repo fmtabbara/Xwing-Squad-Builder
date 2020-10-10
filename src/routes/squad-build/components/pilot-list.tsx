@@ -73,7 +73,7 @@ export const PilotList = ({
         >
           {ship?.name}
         </Typography>
-        <XIcon type="ship" icon={ship?.xws || ""} size="md" color="black" />
+        <XIcon type="ship" icon={ship?.xws || ""} size="lg" color="black" />
       </DialogTitle>
       <DialogContent dividers className={classes.content}>
         <Grid container spacing={2} direction="column">

@@ -17,7 +17,6 @@ const useCardStyle = makeStyles((theme) => ({
   root: {
     "&:hover": {
       cursor: "pointer",
-      background: theme.palette.grey[100],
     },
   },
   headerStyle: {
@@ -35,7 +34,7 @@ const useCardStyle = makeStyles((theme) => ({
 
 const ability = (ability: string) =>
   stringReplace(ability, /\[(.*?)\]/, (match) => (
-    <XIcon type="font" icon={`token-${match.toLowerCase()}`} size="sm" />
+    <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
   ));
 
 export const PilotCard = ({

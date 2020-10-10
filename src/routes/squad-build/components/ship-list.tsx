@@ -34,7 +34,6 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
           maxHeight: 700,
           overflowX: "hidden",
           border: "1px solid #eee",
-          background: "white",
         }}
         dense
       >
