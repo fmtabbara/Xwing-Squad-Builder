@@ -51,7 +51,7 @@ export type TPilot = {
   limited: number;
   name: string;
   shipAbility: { name: string; text: string } | undefined;
-  slots: string[];
+  slots?: string[];
   xws: string;
   shipXWS?: string;
 };

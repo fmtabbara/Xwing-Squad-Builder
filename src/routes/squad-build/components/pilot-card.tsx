@@ -99,6 +99,11 @@ export const PilotCard = ({
           </div>
         )}
         <Typography variant="caption">{ability(pilot.ability)}</Typography>
+        <div>
+          {pilot.slots?.map((s) => (
+            <XIcon type="font" icon={s} />
+          ))}
+        </div>
       </CardContent>
     </Card>
   );

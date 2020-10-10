@@ -18,7 +18,7 @@ export const XIcon = ({
   return (
     <i
       style={{ ...style, fontSize: iconSize, color }}
-      className={`xwing-miniatures-${type} xwing-miniatures-${type}-${icon}`}
+      className={`xwing-miniatures-${type} xwing-miniatures-${type}-${icon.toLowerCase()}`}
     ></i>
   );
 };
