@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/xwing-miniatures.css";
+import "../assets/icons/xwing-miniatures.css";
 
 export const XIcon = ({
   type,
