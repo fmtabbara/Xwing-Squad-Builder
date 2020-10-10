@@ -75,7 +75,7 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
           />
         ) : (
           <TextWithButton>
-            <Typography variant="h5">{squadName?.toUpperCase()}</Typography>
+            <Typography variant="h4">{squadName?.toUpperCase()}</Typography>
             <IconButton onClick={() => setShowSquadNameInput(true)}>
               <EditIcon />
             </IconButton>

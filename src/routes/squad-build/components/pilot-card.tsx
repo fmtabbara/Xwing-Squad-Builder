@@ -35,7 +35,7 @@ const useCardStyle = makeStyles((theme) => ({
 
 const ability = (ability: string) =>
   stringReplace(ability, /\[(.*?)\]/, (match) => (
-    <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
+    <XIcon type="font" icon={`token-${match.toLowerCase()}`} size="sm" />
   ));
 
 export const PilotCard = ({
@@ -95,13 +95,13 @@ export const PilotCard = ({
       <CardContent>
         {pilot.shipXWS && (
           <div>
-            <XIcon type="ship" icon={pilot.shipXWS} size="md" />
+            <XIcon type="ship" icon={pilot.shipXWS} size="lg" />
           </div>
         )}
-        <Typography variant="caption">{ability(pilot.ability)}</Typography>
+        <Typography variant="subtitle1">{ability(pilot.ability)}</Typography>
         <div>
           {pilot.slots?.map((s) => (
-            <XIcon type="font" icon={s} />
+            <XIcon type="font" icon={s} size="md" />
           ))}
         </div>
       </CardContent>
