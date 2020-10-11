@@ -1,11 +1,11 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import CssBaseLine from "@material-ui/core/CssBaseline";
-import { Theme } from "./theme";
-import { FactionSelect } from "./routes/faction-select";
-import { SquadBuild } from "./routes/squad-build";
-import { AppContextProvider } from "./context";
-import "./App.css";
+import React from "react"
+import { Redirect, Route, Switch } from "react-router-dom"
+import CssBaseLine from "@material-ui/core/CssBaseline"
+import { Theme } from "./theme"
+import { FactionSelect } from "./routes/faction-select"
+import { SquadBuild } from "./routes/squad-build"
+import { AppContextProvider } from "./context"
+import "./App.css"
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         </Theme>
       </AppContextProvider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

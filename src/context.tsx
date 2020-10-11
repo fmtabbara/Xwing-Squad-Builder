@@ -1,5 +1,5 @@
-import React, { createContext, SetStateAction, useState } from "react";
-import { useRequest } from "./hooks/useRequest";
+import React, { createContext, SetStateAction, useState } from "react"
+import { useRequest } from "./hooks/useRequest"
 
 enum EnumShipSize {
   Small = "Small",
@@ -28,40 +28,40 @@ enum EnumActionType {
 }
 
 export type TShip = {
-  actions: Array<{ difficulty: EnumActionDifficulty; type: EnumActionType }>;
-  faction: EnumFactionNames;
-  ffg: number;
-  icon: string;
-  name: string;
-  pilots: Array<TPilot>;
-  size: EnumShipSize;
-  stats: any[]; // Needs populating
-  xws: string;
-};
+  actions: Array<{ difficulty: EnumActionDifficulty; type: EnumActionType }>
+  faction: EnumFactionNames
+  ffg: number
+  icon: string
+  name: string
+  pilots: Array<TPilot>
+  size: EnumShipSize
+  stats: any[] // Needs populating
+  xws: string
+}
 
 export type TPilot = {
-  artwork: string;
-  ability: string;
-  caption: string;
-  cost: number | undefined;
-  ffg: number;
-  hyperspace: boolean;
-  image: string;
-  initiative: number;
-  limited: number;
-  name: string;
-  shipAbility: { name: string; text: string } | undefined;
-  slots?: string[];
-  xws: string;
-  shipXWS?: string;
-};
+  artwork: string
+  ability: string
+  caption: string
+  cost: number | undefined
+  ffg: number
+  hyperspace: boolean
+  image: string
+  initiative: number
+  limited: number
+  name: string
+  shipAbility: { name: string; text: string } | undefined
+  slots?: string[]
+  xws: string
+  shipXWS?: string
+}
 
 export type TFaction = {
-  name: string;
-  ffg: number;
-  icon: string;
-  xws: EnumFactionXWS;
-};
+  name: string
+  ffg: number
+  icon: string
+  xws: EnumFactionXWS
+}
 
 export enum EnumFactionXWS {
   rebelalliance = "rebelalliance",
@@ -84,43 +84,43 @@ enum EnumFactionNames {
 }
 
 interface IAppContext {
-  manifestUrlsLoading: boolean;
-  manifestUrls: any;
-  faction: TFaction | undefined;
-  ship: any;
-  squad: TPilot[];
-  setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>;
-  showPilotsList: (ship: any) => void;
-  closePilotsList: () => void;
-  addSquadPilot: (pilot: TPilot, shipXWS: TShip["xws"]) => void;
-  removeSquadPilot: (pilotName: TPilot["name"]) => void;
+  manifestUrlsLoading: boolean
+  manifestUrls: any
+  faction: TFaction | undefined
+  ship: any
+  squad: TPilot[]
+  setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>
+  showPilotsList: (ship: any) => void
+  closePilotsList: () => void
+  addSquadPilot: (pilot: TPilot, shipXWS: TShip["xws"]) => void
+  removeSquadPilot: (pilotName: TPilot["name"]) => void
 }
 
-export const AppContext = createContext({} as IAppContext);
+export const AppContext = createContext({} as IAppContext)
 
 export const AppContextProvider = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) => {
-  const [faction, setFaction] = useState<TFaction | undefined>();
-  const [ship, setShip] = useState<TShip>();
-  const [squad, setSquad] = useState<TPilot[]>([]);
+  const [faction, setFaction] = useState<TFaction | undefined>()
+  const [ship, setShip] = useState<TShip>()
+  const [squad, setSquad] = useState<TPilot[]>([])
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
     "/manifest.json"
-  );
+  )
 
-  const showPilotsList = (ship: any) => setShip(ship);
-  const closePilotsList = () => setShip(undefined);
+  const showPilotsList = (ship: any) => setShip(ship)
+  const closePilotsList = () => setShip(undefined)
 
   const addSquadPilot = (pilot: TPilot, shipXWS: TShip["xws"]) => {
-    setSquad((s) => [...s, { ...pilot, shipXWS }]);
-    closePilotsList();
-  };
+    setSquad((s) => [...s, { ...pilot, shipXWS }])
+    closePilotsList()
+  }
 
   const removeSquadPilot = (pilotName: TPilot["name"]) =>
-    setSquad((s) => s.filter((p) => p.name !== pilotName));
+    setSquad((s) => s.filter((p) => p.name !== pilotName))
 
   return (
     <AppContext.Provider
@@ -139,5 +139,5 @@ export const AppContextProvider = ({
     >
       {children}
     </AppContext.Provider>
-  );
-};
+  )
+}
