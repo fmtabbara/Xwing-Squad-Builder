@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from "react"
 import {
   Typography,
   IconButton,
@@ -7,14 +7,14 @@ import {
   CardContent,
   makeStyles,
   Theme,
-} from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import { TextWithButton } from "../../../components/text-with-button";
-import { UpdateText } from "../../../components/update-text";
-import { AppContext } from "../../../context";
-import { SquadList } from "./squad.list";
-import { Alert } from "@material-ui/lab";
-import { FactionIcon } from "../../../components/faction-icon";
+} from "@material-ui/core"
+import EditIcon from "@material-ui/icons/Edit"
+import { TextWithButton } from "../../../components/text-with-button"
+import { UpdateText } from "../../../components/update-text"
+import { AppContext } from "../../../context"
+import { SquadList } from "./squad.list"
+import { Alert } from "@material-ui/lab"
+import { FactionIcon } from "../../../components/faction-icon"
 
 const useBuilderCardStyle = makeStyles((theme: Theme) => ({
   root: {
@@ -22,11 +22,11 @@ const useBuilderCardStyle = makeStyles((theme: Theme) => ({
     overflowY: "auto",
   },
   header: { padding: 0, background: theme.palette.grey[200] },
-}));
+}))
 
 export const BuilderCard = () => {
-  const { squad } = useContext(AppContext);
-  const classes = useBuilderCardStyle();
+  const { squad } = useContext(AppContext)
+  const classes = useBuilderCardStyle()
   return (
     <Card variant="outlined">
       <CardHeader
@@ -48,14 +48,14 @@ export const BuilderCard = () => {
         <SquadList squad={squad} />
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
 const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
-  const total = 200;
-  const [squadName, setSquadName] = useState("Squad Name");
-  const [showSquadNameInput, setShowSquadNameInput] = useState(false);
-  const { faction } = useContext(AppContext);
+  const total = 200
+  const [squadName, setSquadName] = useState("Squad Name")
+  const [showSquadNameInput, setShowSquadNameInput] = useState(false)
+  const { faction } = useContext(AppContext)
 
   return (
     <div style={{ padding: 16 }}>
@@ -65,12 +65,12 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
           <UpdateText
             text={squadName}
             onClose={(currentSquadName) => {
-              setSquadName(currentSquadName);
-              setShowSquadNameInput(false);
+              setSquadName(currentSquadName)
+              setShowSquadNameInput(false)
             }}
             onUpdate={(updatedValue) => {
-              setSquadName(updatedValue);
-              setShowSquadNameInput(false);
+              setSquadName(updatedValue)
+              setShowSquadNameInput(false)
             }}
           />
         ) : (
@@ -83,7 +83,7 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
         )}
       </div>
 
-      <Typography variant="caption" color="primary">
+      <Typography variant="body1" component="span" color="primary">
         <span
           style={{
             fontWeight: 700,
@@ -94,5 +94,5 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
         </span>
       </Typography>
     </div>
-  );
-};
+  )
+}

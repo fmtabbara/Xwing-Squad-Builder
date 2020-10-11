@@ -57,18 +57,19 @@ export const PilotCard = ({
     >
       <CardHeader
         title={
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <>
             {pilot.name}
             {pilot.cost && (
               <Typography
                 color="primary"
                 variant="body1"
+                component="span"
                 className={classes.costStyle}
               >
-                {`(${pilot.cost})`}
+                {pilot.cost}
               </Typography>
             )}
-          </div>
+          </>
         }
         className={classes.headerStyle}
         avatar={
