@@ -34,7 +34,11 @@ export const SquadBuild = () => {
         />
         <Grid container wrap="nowrap" spacing={2}>
           {isMobile ? (
-            <SideBar open={showSideBar} onClose={handleCloseSideBar}>
+            <SideBar
+              open={showSideBar}
+              onClose={handleCloseSideBar}
+              onOpen={() => setShowSideBar(true)}
+            >
               {
                 <ShipList
                   faction={faction.xws}

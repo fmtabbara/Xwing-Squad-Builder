@@ -6,10 +6,12 @@ export const SideBar = ({
   open,
   children,
   onClose,
+  onOpen,
 }: {
   open: boolean
   children: React.ReactNode
   onClose: () => void
+  onOpen: () => void
 }) => {
   const width = 300
   const theme: Theme = useTheme()
@@ -18,8 +20,7 @@ export const SideBar = ({
       ModalProps={{
         keepMounted: true,
       }}
-      onOpen={() => {}}
-      disableSwipeToOpen
+      onOpen={onOpen}
       anchor="left"
       open={open}
       onClose={onClose}
