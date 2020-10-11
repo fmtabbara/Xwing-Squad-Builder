@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Xwing-Squad-Builder/static/css/main.30587ca8.chunk.css",
-    "main.js": "/Xwing-Squad-Builder/static/js/main.8840d61b.chunk.js",
-    "main.js.map": "/Xwing-Squad-Builder/static/js/main.8840d61b.chunk.js.map",
+    "main.js": "/Xwing-Squad-Builder/static/js/main.aeaaf100.chunk.js",
+    "main.js.map": "/Xwing-Squad-Builder/static/js/main.aeaaf100.chunk.js.map",
     "runtime-main.js": "/Xwing-Squad-Builder/static/js/runtime-main.31679df9.js",
     "runtime-main.js.map": "/Xwing-Squad-Builder/static/js/runtime-main.31679df9.js.map",
     "static/js/2.a89d1514.chunk.js": "/Xwing-Squad-Builder/static/js/2.a89d1514.chunk.js",
     "static/js/2.a89d1514.chunk.js.map": "/Xwing-Squad-Builder/static/js/2.a89d1514.chunk.js.map",
     "index.html": "/Xwing-Squad-Builder/index.html",
-    "precache-manifest.8357ab85c61dce36b2c752de02fce489.js": "/Xwing-Squad-Builder/precache-manifest.8357ab85c61dce36b2c752de02fce489.js",
+    "precache-manifest.ccef6f2ebacd3b9e87451a1f063c3b15.js": "/Xwing-Squad-Builder/precache-manifest.ccef6f2ebacd3b9e87451a1f063c3b15.js",
     "service-worker.js": "/Xwing-Squad-Builder/service-worker.js",
     "static/css/main.30587ca8.chunk.css.map": "/Xwing-Squad-Builder/static/css/main.30587ca8.chunk.css.map",
     "static/js/2.a89d1514.chunk.js.LICENSE.txt": "/Xwing-Squad-Builder/static/js/2.a89d1514.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.31679df9.js",
     "static/js/2.a89d1514.chunk.js",
     "static/css/main.30587ca8.chunk.css",
-    "static/js/main.8840d61b.chunk.js"
+    "static/js/main.aeaaf100.chunk.js"
   ]
 }
