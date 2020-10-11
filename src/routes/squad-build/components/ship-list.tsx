@@ -1,30 +1,31 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ListItem, ListItemText, List, ListItemIcon } from "@material-ui/core";
-import { AppContext, EnumFactionXWS, TShip } from "../../../context";
-import { XIcon } from "../../../components/Icon";
+import React, { useContext, useEffect, useState } from "react"
+import { ListItem, ListItemText, List, ListItemIcon } from "@material-ui/core"
+import { AppContext, EnumFactionXWS, TShip } from "../../../context"
+import { XIcon } from "../../../components/Icon"
 
 export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
-  const [ships, setShips] = useState<TShip[]>([]);
-  const [shipsLoading, setShipsLoading] = useState(true);
+  const [ships, setShips] = useState<TShip[]>([])
+  const [shipsLoading, setShipsLoading] = useState(true)
 
-  const { manifestUrls, showPilotsList } = useContext(AppContext);
+  const { manifestUrls, showPilotsList } = useContext(AppContext)
 
-  const pilots = manifestUrls.pilots.find((u: any) => u.faction === faction);
+  const pilots = manifestUrls.pilots.find((u: any) => u.faction === faction)
 
   useEffect(() => {
-    const promises = pilots.ships.map((s: string) => fetch(s));
-
+    const promises = pilots.ships.map((s: string) =>
+      fetch(s, { headers: { Accept: "application/json" } })
+    )
     Promise.all(promises).then((rs: any) => {
-      const data = rs.map((r: any) => r.json().then((r: any) => r));
+      const data = rs.map((r: any) => r.json().then((r: any) => r))
       Promise.all(data).then((d: any) => {
-        setShips(d);
-        setShipsLoading(false);
-      });
-    });
-  }, [pilots]);
+        setShips(d)
+        setShipsLoading(false)
+      })
+    })
+  }, [pilots])
 
   if (shipsLoading) {
-    return <div>Loading</div>;
+    return <div>Loading</div>
   }
 
   if (ships.length > 0) {
@@ -48,8 +49,8 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
           </ListItem>
         ))}
       </List>
-    );
+    )
   }
 
-  return <div />;
-};
+  return <div />
+}

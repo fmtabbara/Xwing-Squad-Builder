@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-const toJson = (data: any) => data.json();
+const toJson = (data: any) => data.json()
 
 export const useRequest = (url: string, opts?: {}) => {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [data, setData] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
 
   useEffect(() => {
-    fetch(url)
+    fetch(url, { headers: { Accept: "application/json" } })
       .then(toJson)
-      .then((data) => setData(data));
-  }, []);
+      .then((data) => {
+        setData(data)
+      })
+  }, [url])
 
-  return { data, isLoading, error };
-};
+  return { data, isLoading, error }
+}
