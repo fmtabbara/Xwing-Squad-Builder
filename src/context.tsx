@@ -108,7 +108,7 @@ export const AppContextProvider = ({
   const [squad, setSquad] = useState<TPilot[]>([])
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
-    "/manifest.json"
+    "manifest.json"
   )
 
   const showPilotsList = (ship: any) => setShip(ship)
