@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1a51fb8ac1e10674e19c5a3f5592f7b0",
+    "revision": "1f4c22832e403a3a46b45eb80dd9326e",
     "url": "/Xwing-Squad-Builder/index.html"
   },
   {
