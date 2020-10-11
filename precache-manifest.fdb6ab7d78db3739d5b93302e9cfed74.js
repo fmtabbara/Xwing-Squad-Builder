@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eaf9b02e17301eb8325cf901aeec0bc5",
+    "revision": "16293aea014f5dd1517e47b27c0711fe",
     "url": "/Xwing-Squad-Builder/index.html"
   },
   {
-    "revision": "9f7766d75e2ed92289d8",
+    "revision": "da4f53bc98bb816ee53b",
     "url": "/Xwing-Squad-Builder/static/css/main.30587ca8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Xwing-Squad-Builder/static/js/2.f475d5ec.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9f7766d75e2ed92289d8",
-    "url": "/Xwing-Squad-Builder/static/js/main.285f0e05.chunk.js"
+    "revision": "da4f53bc98bb816ee53b",
+    "url": "/Xwing-Squad-Builder/static/js/main.d4cb60a3.chunk.js"
   },
   {
     "revision": "42270e740fa34c5e0f31",
