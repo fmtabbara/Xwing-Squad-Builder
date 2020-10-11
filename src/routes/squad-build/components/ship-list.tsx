@@ -3,7 +3,13 @@ import { ListItem, ListItemText, List, ListItemIcon } from "@material-ui/core"
 import { AppContext, EnumFactionXWS, TShip } from "../../../context"
 import { XIcon } from "../../../components/Icon"
 
-export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
+export const ShipList = ({
+  faction,
+  onShowList,
+}: {
+  faction: EnumFactionXWS
+  onShowList?: () => void
+}) => {
   const [ships, setShips] = useState<TShip[]>([])
   const [shipsLoading, setShipsLoading] = useState(true)
 
@@ -39,7 +45,14 @@ export const ShipList = ({ faction }: { faction: EnumFactionXWS }) => {
         dense
       >
         {ships.map((ship) => (
-          <ListItem key={ship.name} button onClick={() => showPilotsList(ship)}>
+          <ListItem
+            key={ship.name}
+            button
+            onClick={() => {
+              showPilotsList(ship)
+              onShowList?.()
+            }}
+          >
             <ListItemIcon style={{ marginRight: 8 }}>
               <XIcon type="ship" icon={ship.xws} size="lg" color="black" />
             </ListItemIcon>

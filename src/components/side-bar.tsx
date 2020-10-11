@@ -1,33 +1,42 @@
-import React from "react";
-import { Button, Drawer } from "@material-ui/core";
+import React from "react"
+import { Button, SwipeableDrawer, Theme } from "@material-ui/core"
+import { useTheme } from "@material-ui/styles"
 
 export const SideBar = ({
   open,
   children,
   onClose,
 }: {
-  open: boolean;
-  children: React.ReactNode;
-  onClose: () => void;
+  open: boolean
+  children: React.ReactNode
+  onClose: () => void
 }) => {
-  const width = 300;
+  const width = 300
+  const theme: Theme = useTheme()
   return (
-    <Drawer
-      PaperProps={{ style: { top: "unset" } }}
+    <SwipeableDrawer
       ModalProps={{
         keepMounted: true,
       }}
-      variant="persistent"
+      onOpen={() => {}}
+      disableSwipeToOpen
       anchor="left"
       open={open}
       onClose={onClose}
     >
       <div style={{ width }}>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            background: theme.palette.grey[200],
+            borderBottom: `1px solid ${theme.palette.grey[300]}`,
+          }}
+        >
           <Button onClick={onClose}>Close</Button>
         </div>
         {children}
       </div>
-    </Drawer>
-  );
-};
+    </SwipeableDrawer>
+  )
+}
