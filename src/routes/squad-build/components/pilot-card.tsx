@@ -1,6 +1,6 @@
-import React from "react";
-import stringReplace from "react-string-replace";
-import clsx from "clsx";
+import React from "react"
+import stringReplace from "react-string-replace"
+import clsx from "clsx"
 import {
   Card,
   CardContent,
@@ -8,10 +8,10 @@ import {
   IconButton,
   makeStyles,
   Typography,
-} from "@material-ui/core";
-import { TPilot } from "../../../context";
-import { XIcon } from "../../../components/Icon";
-import CloseIcon from "@material-ui/icons/Close";
+} from "@material-ui/core"
+import { TPilot } from "../../../context"
+import { XIcon } from "../../../components/Icon"
+import CloseIcon from "@material-ui/icons/Close"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -31,23 +31,23 @@ const useCardStyle = makeStyles((theme) => ({
     fontWeight: 900,
     marginLeft: theme.spacing(1),
   },
-}));
+}))
 
 const ability = (ability: string) =>
   stringReplace(ability, /\[(.*?)\]/, (match) => (
     <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
-  ));
+  ))
 
 export const PilotCard = ({
   pilot,
   onAddPilot,
   onRemovePilot,
 }: {
-  pilot: TPilot;
-  onAddPilot?: (pilot: TPilot) => void;
-  onRemovePilot?: (pilot: string) => void;
+  pilot: TPilot
+  onAddPilot?: (pilot: TPilot) => void
+  onRemovePilot?: (pilot: string) => void
 }) => {
-  const classes = useCardStyle();
+  const classes = useCardStyle()
 
   return (
     <Card
@@ -99,12 +99,12 @@ export const PilotCard = ({
           </div>
         )}
         <Typography variant="subtitle1">{ability(pilot.ability)}</Typography>
-        <div>
+        <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
           {pilot.slots?.map((s) => (
             <XIcon type="font" icon={s} size="md" />
           ))}
         </div>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
