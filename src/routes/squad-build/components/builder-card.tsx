@@ -21,7 +21,7 @@ const useBuilderCardStyle = makeStyles((theme: Theme) => ({
     maxHeight: 700,
     overflowY: "auto",
   },
-  header: { padding: 0, background: theme.palette.grey[200] },
+  header: { padding: 0 },
 }))
 
 export const BuilderCard = () => {

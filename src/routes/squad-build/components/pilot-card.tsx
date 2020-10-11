@@ -17,7 +17,6 @@ const useCardStyle = makeStyles((theme) => ({
   root: {
     "&:hover": {
       cursor: "pointer",
-      background: theme.palette.grey[100],
     },
   },
   headerStyle: {

@@ -30,7 +30,6 @@ export const SideBar = ({
           style={{
             display: "flex",
             justifyContent: "flex-end",
-            background: theme.palette.grey[200],
             borderBottom: `1px solid ${theme.palette.grey[300]}`,
           }}
         >

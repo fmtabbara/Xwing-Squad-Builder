@@ -1,7 +1,20 @@
 import React, { useContext, useEffect, useState } from "react"
-import { ListItem, ListItemText, List, ListItemIcon } from "@material-ui/core"
+import {
+  ListItem,
+  ListItemText,
+  List,
+  ListItemIcon,
+  makeStyles,
+  Theme,
+} from "@material-ui/core"
 import { AppContext, EnumFactionXWS, TShip } from "../../../context"
 import { XIcon } from "../../../components/Icon"
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+  },
+}))
 
 export const ShipList = ({
   faction,
@@ -10,6 +23,8 @@ export const ShipList = ({
   faction: EnumFactionXWS
   onShowList?: () => void
 }) => {
+  const classes = useStyles()
+
   const [ships, setShips] = useState<TShip[]>([])
   const [shipsLoading, setShipsLoading] = useState(true)
 
@@ -37,10 +52,10 @@ export const ShipList = ({
   if (ships.length > 0) {
     return (
       <List
+        className={classes.root}
         style={{
           maxHeight: 700,
           overflowX: "hidden",
-          border: "1px solid #eee",
         }}
         dense
       >
@@ -54,11 +69,9 @@ export const ShipList = ({
             }}
           >
             <ListItemIcon style={{ marginRight: 8 }}>
-              <XIcon type="ship" icon={ship.xws} size="lg" color="black" />
+              <XIcon type="ship" icon={ship.xws} size="lg" />
             </ListItemIcon>
-            <ListItemText style={{ color: "black" }}>
-              {ship.name.toUpperCase()}
-            </ListItemText>
+            <ListItemText primary={ship.name.toUpperCase()} />
           </ListItem>
         ))}
       </List>
