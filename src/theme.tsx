@@ -24,6 +24,7 @@ const darkTheme: ThemeOptions = {
 }
 
 interface IThemeProviderProps {
+  currentTheme: string
   changeTheme: () => void
 }
 
@@ -43,7 +44,9 @@ export const Theme = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <ThemeContext.Provider value={{ changeTheme }}>
+    <ThemeContext.Provider
+      value={{ changeTheme, currentTheme: theme.palette.type }}
+    >
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   )
