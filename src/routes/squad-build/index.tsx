@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { Redirect, useLocation } from "react-router-dom"
+import { Redirect, useHistory, useLocation } from "react-router-dom"
 import { Button, Grid } from "@material-ui/core"
 import { ShipList } from "./components/ship-list"
 import { Page } from "../../components/page"
@@ -10,9 +10,10 @@ import { SideBar } from "../../components/side-bar"
 import { useIsMobile } from "../../hooks/useIsMobile"
 
 export const SquadBuild = () => {
-  const { faction, ship, closePilotsList } = useContext(AppContext)
+  const { faction, ship, closePilotsList, resetSquad } = useContext(AppContext)
 
   const location = useLocation()
+  const history = useHistory()
   const isMobile = useIsMobile()
 
   const [showSideBar, setShowSideBar] = useState(false)
@@ -54,6 +55,14 @@ export const SquadBuild = () => {
 
           <Grid item style={{ width: "100%" }}>
             <>
+              <Button
+                onClick={() => {
+                  resetSquad()
+                  history.push("/faction-select")
+                }}
+              >
+                Factions
+              </Button>
               {isMobile && (
                 <Button onClick={() => setShowSideBar(true)}>Ships</Button>
               )}
