@@ -69,7 +69,7 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
   return (
     <div style={{ padding: 16 }}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <FactionIcon icon={faction!.icon} xws={faction!.xws} />
+        <FactionIcon icon={faction!.icon} xws={faction!.xws} small />
         {showSquadNameInput ? (
           <UpdateText
             text={squadName}
@@ -84,7 +84,7 @@ const BuilderCardHeader = ({ squadPoints }: { squadPoints: number }) => {
           />
         ) : (
           <TextWithButton>
-            <Typography variant="h4">{squadName?.toUpperCase()}</Typography>
+            <Typography variant="h6">{squadName?.toUpperCase()}</Typography>
             <IconButton onClick={() => setShowSquadNameInput(true)}>
               <EditIcon />
             </IconButton>
