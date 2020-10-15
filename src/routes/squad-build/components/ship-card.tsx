@@ -1,8 +1,15 @@
 import React, { useContext } from "react"
 
 import { AppContext, TShip } from "../../../context"
-import { Card, CardContent, CardHeader, makeStyles } from "@material-ui/core"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  makeStyles,
+  Typography,
+} from "@material-ui/core"
 import { XIcon } from "../../../components/Icon"
+import { AbilityIconMap } from "../../../utils"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -37,6 +44,16 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
       <CardContent>
         <div>
           <XIcon type="ship" icon={ship.xws} size="lg" />
+        </div>
+        <div>
+          <Typography variant="subtitle1">
+            {ship.pilots[0].shipAbility?.name}
+          </Typography>
+          {ship.pilots[0].shipAbility && (
+            <Typography variant="caption">
+              {AbilityIconMap(ship.pilots[0].shipAbility?.text)}
+            </Typography>
+          )}
         </div>
       </CardContent>
     </Card>

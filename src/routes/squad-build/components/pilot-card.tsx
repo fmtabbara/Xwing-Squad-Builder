@@ -1,5 +1,4 @@
 import React from "react"
-import stringReplace from "react-string-replace"
 import clsx from "clsx"
 import {
   Card,
@@ -12,6 +11,7 @@ import {
 import { TPilot } from "../../../context"
 import { XIcon } from "../../../components/Icon"
 import CloseIcon from "@material-ui/icons/Close"
+import { AbilityIconMap } from "../../../utils"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -31,11 +31,6 @@ const useCardStyle = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
   },
 }))
-
-const ability = (ability: string) =>
-  stringReplace(ability, /\[(.*?)\]/, (match) => (
-    <XIcon type="font" icon={`token-${match.toLowerCase()}`} />
-  ))
 
 export const PilotCard = ({
   pilot,
@@ -98,7 +93,17 @@ export const PilotCard = ({
             <XIcon type="ship" icon={pilot.shipXWS} size="lg" />
           </div>
         )}
-        <Typography variant="subtitle1">{ability(pilot.ability)}</Typography>
+        <div>
+          <Typography variant="subtitle1">{pilot.shipAbility?.name}</Typography>
+          <Typography variant="caption">
+            {AbilityIconMap(pilot.shipAbility!.text)}
+          </Typography>
+        </div>
+        <div>
+          <Typography variant="caption">
+            {AbilityIconMap(pilot.ability)}
+          </Typography>
+        </div>
         <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
           {pilot.slots?.map((s) => (
             <XIcon type="font" icon={s} />
