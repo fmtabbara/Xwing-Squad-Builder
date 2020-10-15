@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Xwing-Squad-Builder/precache-manifest.a10cca7e3ce6150ed14fe37ca0dc4c07.js"
+  "/Xwing-Squad-Builder/precache-manifest.e5baa065215e251e3fdda3b57135f8e3.js"
 );
 
 self.addEventListener('message', (event) => {
