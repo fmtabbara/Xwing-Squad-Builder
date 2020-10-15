@@ -36,11 +36,11 @@ const useDialogStyles = makeStyles((theme: Theme) => ({
 export const PilotList = ({
   ship,
   open,
-  onSelect,
+  closeShipList,
 }: {
   ship: TShip | undefined
   open: boolean
-  onSelect: () => void
+  closeShipList: () => void
 }) => {
   const classes = useDialogStyles()
   const isMobile = useIsMobile()
@@ -49,7 +49,7 @@ export const PilotList = ({
 
   const onAddPilot = (shipWXS: TShip["xws"]) => (pilot: TPilot) => {
     addSquadPilot(pilot, shipWXS)
-    onSelect()
+    closeShipList()
   }
   const partialAddPilot = onAddPilot(ship?.xws!)
 
@@ -91,7 +91,7 @@ export const PilotList = ({
         <Button
           onClick={() => {
             closePilotsList()
-            onSelect()
+            closeShipList()
           }}
           variant="text"
         >

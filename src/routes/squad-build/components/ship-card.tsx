@@ -12,13 +12,7 @@ const useCardStyle = makeStyles((theme) => ({
   },
 }))
 
-export const ShipCard = ({
-  ship,
-  onSelect,
-}: {
-  ship: TShip
-  onSelect: () => void
-}) => {
+export const ShipCard = ({ ship }: { ship: TShip }) => {
   const classes = useCardStyle()
 
   const { showPilotsList } = useContext(AppContext)
@@ -28,7 +22,6 @@ export const ShipCard = ({
       className={classes.root}
       onClick={() => {
         showPilotsList(ship)
-        onSelect()
       }}
     >
       <CardHeader

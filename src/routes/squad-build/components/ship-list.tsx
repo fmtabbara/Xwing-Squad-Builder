@@ -86,7 +86,7 @@ export const ShipList = ({
           {ships.map((s) => {
             return (
               <Grid item xs={12}>
-                <ShipCard ship={s} onSelect={() => {}} />
+                <ShipCard ship={s} />
               </Grid>
             )
           })}

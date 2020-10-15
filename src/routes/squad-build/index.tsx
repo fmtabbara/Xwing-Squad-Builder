@@ -32,7 +32,7 @@ export const SquadBuild = () => {
         <PilotList
           open={ship ? true : false}
           ship={ship}
-          onSelect={() => setDisplayShipList(false)}
+          closeShipList={() => setDisplayShipList(false)}
         />
 
         <Grid
