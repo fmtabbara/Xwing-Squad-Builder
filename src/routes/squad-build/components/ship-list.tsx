@@ -17,6 +17,7 @@ import {
 import { makeStyles } from "@material-ui/styles"
 import { AppContext, TShip } from "../../../context"
 import { ShipCard } from "./ship-card"
+import { useIsMobile } from "../../../hooks/useIsMobile"
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -44,6 +45,7 @@ export const ShipList = ({
   onClose: () => void
 }) => {
   const classes = useDialogStyles()
+  const isMobile = useIsMobile()
 
   const [ships, setShips] = useState<TShip[]>([])
   const [shipsLoading, setShipsLoading] = useState(true)
@@ -74,8 +76,9 @@ export const ShipList = ({
       keepMounted
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
-      maxWidth="md"
+      maxWidth="lg"
       fullWidth
+      fullScreen={isMobile}
     >
       <DialogTitle className={classes.title}>Select Ship</DialogTitle>
       <DialogContent dividers>
@@ -83,7 +86,7 @@ export const ShipList = ({
           {ships.map((s) => {
             return (
               <Grid item xs={12}>
-                <ShipCard ship={s} onSelect={onClose} />
+                <ShipCard ship={s} onSelect={() => {}} />
               </Grid>
             )
           })}

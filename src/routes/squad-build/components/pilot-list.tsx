@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core"
 import { XIcon } from "../../../components/Icon"
 import { makeStyles } from "@material-ui/styles"
+import { useIsMobile } from "../../../hooks/useIsMobile"
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -35,30 +36,34 @@ const useDialogStyles = makeStyles((theme: Theme) => ({
 export const PilotList = ({
   ship,
   open,
-  onClose,
+  onSelect,
 }: {
   ship: TShip | undefined
   open: boolean
-  onAdd: () => void
-  onClose: () => void
+  onSelect: () => void
 }) => {
   const classes = useDialogStyles()
-  const { addSquadPilot } = useContext(AppContext)
+  const isMobile = useIsMobile()
 
-  const onAddPilot = (shipWXS: TShip["xws"]) => (pilot: TPilot) =>
+  const { addSquadPilot, closePilotsList } = useContext(AppContext)
+
+  const onAddPilot = (shipWXS: TShip["xws"]) => (pilot: TPilot) => {
     addSquadPilot(pilot, shipWXS)
+    onSelect()
+  }
   const partialAddPilot = onAddPilot(ship?.xws!)
 
   return (
     <Dialog
       open={open}
-      onClose={onClose}
+      onClose={closePilotsList}
       TransitionComponent={Transition}
       keepMounted
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
       maxWidth="md"
       fullWidth
+      fullScreen={isMobile}
     >
       <DialogTitle disableTypography className={classes.title}>
         <Typography
@@ -82,7 +87,14 @@ export const PilotList = ({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} variant="text">
+        <Button onClick={closePilotsList}>BACK</Button>
+        <Button
+          onClick={() => {
+            closePilotsList()
+            onSelect()
+          }}
+          variant="text"
+        >
           CLOSE
         </Button>
       </DialogActions>

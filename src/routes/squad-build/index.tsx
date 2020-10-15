@@ -25,16 +25,16 @@ export const SquadBuild = () => {
   if (faction) {
     return (
       <Page>
-        <PilotList
-          open={ship ? true : false}
-          ship={ship}
-          onAdd={() => {}}
-          onClose={closePilotsList}
-        />
         <ShipList
           open={displayShipList}
           onClose={() => setDisplayShipList(false)}
         />
+        <PilotList
+          open={ship ? true : false}
+          ship={ship}
+          onSelect={() => setDisplayShipList(false)}
+        />
+
         <Grid
           container
           direction="column"
