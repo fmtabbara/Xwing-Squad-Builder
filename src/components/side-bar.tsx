@@ -25,7 +25,7 @@ export const SideBar = ({
       open={open}
       onClose={onClose}
     >
-      <div style={{ width }}>
+      <div style={{ width, overflow: "hidden" }}>
         <div
           style={{
             display: "flex",

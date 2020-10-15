@@ -18,17 +18,26 @@ import { FactionIcon } from "../../../components/faction-icon"
 
 const useBuilderCardStyle = makeStyles((theme: Theme) => ({
   root: {
-    maxHeight: 700,
+    width: "100%",
+    maxHeight: "100%",
+    overflow: "auto",
+  },
+  content: {
     overflowY: "auto",
   },
-  header: { padding: 0 },
+  header: {
+    padding: 0,
+    position: "sticky",
+    top: 0,
+    background: theme.palette.background.paper,
+  },
 }))
 
 export const BuilderCard = () => {
   const { squad } = useContext(AppContext)
   const classes = useBuilderCardStyle()
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" className={classes.root}>
       <CardHeader
         className={classes.header}
         title={
@@ -39,7 +48,7 @@ export const BuilderCard = () => {
           />
         }
       />
-      <CardContent className={classes.root}>
+      <CardContent className={classes.content}>
         {squad.length === 0 && (
           <Alert style={{ margin: 8 }} severity="info">
             No squad pilots selected

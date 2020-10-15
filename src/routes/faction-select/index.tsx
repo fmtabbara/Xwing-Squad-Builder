@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { Page } from "../../components/page";
-import { Button, Grid, Typography } from "@material-ui/core";
-import { useRequest } from "../../hooks/useRequest";
-import { AppContext, TFaction } from "../../context";
-import { useHistory, useLocation } from "react-router-dom";
-import { FactionIcon } from "../../components/faction-icon";
+import React, { useContext } from "react"
+import { Page } from "../../components/page"
+import { Button, Grid, Typography } from "@material-ui/core"
+import { useRequest } from "../../hooks/useRequest"
+import { AppContext, TFaction } from "../../context"
+import { useHistory, useLocation } from "react-router-dom"
+import { FactionIcon } from "../../components/faction-icon"
 
 export const FactionSelect = () => {
   const {
@@ -12,17 +12,17 @@ export const FactionSelect = () => {
     isLoading,
   }: { data: TFaction[] | undefined; isLoading: boolean } = useRequest(
     "data/factions/factions.json"
-  );
+  )
 
-  const history = useHistory();
-  const location = useLocation();
+  const history = useHistory()
+  const location = useLocation()
 
-  const { setFaction } = useContext(AppContext);
+  const { setFaction } = useContext(AppContext)
 
   const handleSelect = (faction: TFaction) => {
-    setFaction(faction);
-    history.push(`${location.search}/squad-build`);
-  };
+    setFaction(faction)
+    history.push(`${location.search}/squad-build`)
+  }
 
   return (
     <Page>
@@ -30,8 +30,9 @@ export const FactionSelect = () => {
         container
         direction="column"
         alignItems="center"
-        justify="center"
+        wrap="nowrap"
         spacing={2}
+        style={{ height: "100%", overflow: "auto" }}
       >
         {isLoading && <div>Loading..</div>}
         {factions.map((f, index: number) => (
@@ -41,15 +42,15 @@ export const FactionSelect = () => {
         ))}
       </Grid>
     </Page>
-  );
-};
+  )
+}
 
 const Faction = ({
   faction,
   onSelect,
 }: {
-  faction: TFaction;
-  onSelect: (faction: TFaction) => void;
+  faction: TFaction
+  onSelect: (faction: TFaction) => void
 }) => {
   return (
     <Button
@@ -63,5 +64,5 @@ const Faction = ({
         {faction.name}
       </Typography>
     </Button>
-  );
-};
+  )
+}

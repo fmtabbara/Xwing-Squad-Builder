@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { Redirect, useHistory, useLocation } from "react-router-dom"
-import { Button, Grid } from "@material-ui/core"
+import { Button, Grid, Theme } from "@material-ui/core"
 import { ShipList } from "./components/ship-list"
 import { Page } from "../../components/page"
 import { AppContext } from "../../context"
@@ -8,6 +8,7 @@ import { BuilderCard } from "./components/builder-card"
 import { PilotList } from "./components/pilot-list"
 import { SideBar } from "../../components/side-bar"
 import { useIsMobile } from "../../hooks/useIsMobile"
+import { useTheme } from "@material-ui/styles"
 
 export const SquadBuild = () => {
   const { faction, ship, closePilotsList, resetSquad } = useContext(AppContext)
@@ -15,6 +16,7 @@ export const SquadBuild = () => {
   const location = useLocation()
   const history = useHistory()
   const isMobile = useIsMobile()
+  const theme: Theme = useTheme()
 
   const [showSideBar, setShowSideBar] = useState(false)
 
@@ -26,35 +28,22 @@ export const SquadBuild = () => {
 
   if (faction) {
     return (
-      <Page>
+      <Page withSideBar>
         <PilotList
           open={ship ? true : false}
           ship={ship}
           onAdd={() => {}}
           onClose={closePilotsList}
         />
-        <Grid container wrap="nowrap" spacing={2}>
-          {isMobile ? (
-            <SideBar
-              open={showSideBar}
-              onClose={handleCloseSideBar}
-              onOpen={() => setShowSideBar(true)}
-            >
-              {
-                <ShipList
-                  faction={faction.xws}
-                  onShowList={handleCloseSideBar}
-                />
-              }
-            </SideBar>
-          ) : (
-            <Grid item style={{ width: 275, minWidth: 275 }}>
-              {<ShipList faction={faction.xws} />}
-            </Grid>
-          )}
-
-          <Grid item style={{ width: "100%" }}>
-            <>
+        <Grid
+          container
+          direction="column"
+          alignItems="flex-start"
+          wrap="nowrap"
+          style={{ height: "100%" }}
+        >
+          <Grid item>
+            <div style={{ display: "flex", marginBottom: theme.spacing(0.5) }}>
               <Button
                 onClick={() => {
                   resetSquad()
@@ -66,9 +55,11 @@ export const SquadBuild = () => {
               {isMobile && (
                 <Button onClick={() => setShowSideBar(true)}>Ships</Button>
               )}
-              <BuilderCard />
-            </>
+
+              <Button onClick={() => {}}>Ships</Button>
+            </div>
           </Grid>
+          <BuilderCard />
         </Grid>
       </Page>
     )
