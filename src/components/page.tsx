@@ -4,10 +4,7 @@ import LightMode from "@material-ui/icons/Brightness7"
 import DarkMode from "@material-ui/icons/Brightness4"
 import { ThemeContext } from "../theme"
 import { Logo } from "./logo"
-import { ShipList } from "../routes/squad-build/components/ship-list"
-import clsx from "clsx"
 
-const sidebarWidth = 325
 const navHeight = 75
 
 const usePageStyle = makeStyles((theme) => ({
@@ -22,20 +19,8 @@ const usePageStyle = makeStyles((theme) => ({
     `,
     gridTemplateRows: `${navHeight}px auto`,
   },
-  withSideBar: {
-    gridTemplateAreas: `
-    "nav nav"
-    "sidebar content"
-  `,
-    gridTemplateColumns: `${sidebarWidth}px auto`,
-  },
   nav: {
     gridArea: "nav",
-  },
-  sidebar: {
-    gridArea: "sidebar",
-    height: `calc(100vh - ${navHeight}px)`,
-    overflow: "hidden auto",
   },
   content: {
     gridArea: "content",
@@ -45,20 +30,12 @@ const usePageStyle = makeStyles((theme) => ({
   },
 }))
 
-export const Page = ({
-  children,
-  withSideBar,
-}: {
-  children: any
-  withSideBar?: boolean
-}) => {
+export const Page = ({ children }: { children: any }) => {
   const { changeTheme, currentTheme } = useContext(ThemeContext)
   const classes = usePageStyle()
   return (
     <Paper square>
-      <div
-        className={clsx(classes.root, { [classes.withSideBar]: withSideBar })}
-      >
+      <div className={classes.root}>
         <div className={classes.nav}>
           <Grid
             container
@@ -76,11 +53,6 @@ export const Page = ({
             </Grid>
           </Grid>
         </div>
-        {withSideBar && (
-          <div className={classes.sidebar}>
-            <ShipList />
-          </div>
-        )}
         <div className={classes.content}>{children}</div>
       </div>
     </Paper>

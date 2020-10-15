@@ -1,28 +1,52 @@
 import React, { useContext, useEffect, useState } from "react"
-import {
-  ListItem,
-  ListItemText,
-  List,
-  ListItemIcon,
-  makeStyles,
-  Theme,
-} from "@material-ui/core"
-import { AppContext, EnumFactionXWS, TShip } from "../../../context"
-import { XIcon } from "../../../components/Icon"
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
+import Slide from "@material-ui/core/Slide"
+import { TransitionProps } from "@material-ui/core/transitions"
+
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogActions,
+  Grid,
+  Theme,
+  Typography,
+} from "@material-ui/core"
+
+import { makeStyles } from "@material-ui/styles"
+import { AppContext, TShip } from "../../../context"
+import { ShipCard } from "./ship-card"
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & { children?: React.ReactElement<any, any> },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="down" ref={ref} {...props} />
+})
+
+const useDialogStyles = makeStyles((theme: Theme) => ({
+  title: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 3),
   },
 }))
 
-export const ShipList = ({ onShowList }: { onShowList?: () => void }) => {
-  const classes = useStyles()
+export const ShipList = ({
+  open,
+  onClose,
+}: {
+  open: boolean
+  onClose: () => void
+}) => {
+  const classes = useDialogStyles()
 
   const [ships, setShips] = useState<TShip[]>([])
   const [shipsLoading, setShipsLoading] = useState(true)
 
-  const { manifestUrls, showPilotsList, faction } = useContext(AppContext)
+  const { manifestUrls, faction } = useContext(AppContext)
 
   const pilots =
     manifestUrls?.pilots.find((u: any) => u.faction === faction?.xws) || []
@@ -40,38 +64,44 @@ export const ShipList = ({ onShowList }: { onShowList?: () => void }) => {
     })
   }, [pilots])
 
-  if (shipsLoading) {
-    return <div>Loading</div>
-  }
-
-  if (ships.length > 0) {
-    return (
-      <List
-        className={classes.root}
-        style={{
-          overflowX: "hidden",
-          overflowY: "auto",
-        }}
-        dense
-      >
-        {ships.map((ship) => (
-          <ListItem
-            key={ship.name}
-            button
-            onClick={() => {
-              showPilotsList(ship)
-              onShowList?.()
-            }}
-          >
-            <ListItemIcon style={{ marginRight: 8 }}>
-              <XIcon type="ship" icon={ship.xws} size="lg" />
-            </ListItemIcon>
-            <ListItemText primary={ship.name.toUpperCase()} />
-          </ListItem>
-        ))}
-      </List>
-    )
-  }
-
-  return <div />
+  return (
+    <Dialog
+      open={open}
+      onClose={onClose}
+      TransitionComponent={Transition}
+      keepMounted
+      aria-labelledby="alert-dialog-slide-title"
+      aria-describedby="alert-dialog-slide-description"
+      maxWidth="md"
+      fullWidth
+    >
+      <DialogTitle disableTypography className={classes.title}>
+        <Typography
+          style={{
+            fontWeight: 700,
+            textTransform: "uppercase",
+            marginRight: 8,
+          }}
+        >
+          Select Ship
+        </Typography>
+      </DialogTitle>
+      <DialogContent dividers>
+        <Grid container spacing={2} direction="column">
+          {ships.map((s) => {
+            return (
+              <Grid item xs={12}>
+                <ShipCard ship={s} onSelect={onClose} />
+              </Grid>
+            )
+          })}
+        </Grid>
+      </DialogContent>
+      <DialogActions>
+        <Button variant="text" onClick={onClose}>
+          CLOSE
+        </Button>
+      </DialogActions>
+    </Dialog>
+  )
 }
