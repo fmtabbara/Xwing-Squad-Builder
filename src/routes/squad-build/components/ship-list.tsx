@@ -30,7 +30,9 @@ const useDialogStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    padding: theme.spacing(0, 3),
+    padding: theme.spacing(3),
+    fontWeight: 900,
+    textTransform: "uppercase",
   },
 }))
 
@@ -75,17 +77,7 @@ export const ShipList = ({
       maxWidth="md"
       fullWidth
     >
-      <DialogTitle disableTypography className={classes.title}>
-        <Typography
-          style={{
-            fontWeight: 700,
-            textTransform: "uppercase",
-            marginRight: 8,
-          }}
-        >
-          Select Ship
-        </Typography>
-      </DialogTitle>
+      <DialogTitle className={classes.title}>Select Ship</DialogTitle>
       <DialogContent dividers>
         <Grid container spacing={2} direction="column">
           {ships.map((s) => {
