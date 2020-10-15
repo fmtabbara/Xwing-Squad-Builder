@@ -34,12 +34,20 @@ export const FactionSelect = () => {
         spacing={2}
         style={{ height: "100%", overflow: "auto" }}
       >
-        {isLoading && <div>Loading..</div>}
-        {factions.map((f, index: number) => (
-          <Grid item key={index}>
-            <Faction faction={f} onSelect={handleSelect} />
-          </Grid>
-        ))}
+        <Grid item>
+          <Typography
+            variant="h4"
+            style={{ textTransform: "uppercase", margin: 36 }}
+          >
+            Faction Select
+          </Typography>
+        </Grid>
+        {!isLoading &&
+          factions.map((f, index: number) => (
+            <Grid item key={index}>
+              <Faction faction={f} onSelect={handleSelect} />
+            </Grid>
+          ))}
       </Grid>
     </Page>
   )
