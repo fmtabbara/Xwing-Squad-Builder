@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Grid,
   makeStyles,
   Typography,
 } from "@material-ui/core"
@@ -54,6 +55,11 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
               {AbilityIconMap(ship.pilots[0].shipAbility?.text)}
             </Typography>
           )}
+        </div>
+        <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
+          {ship.actions.map((a) => (
+            <XIcon type="font" icon={a.type} />
+          ))}
         </div>
       </CardContent>
     </Card>

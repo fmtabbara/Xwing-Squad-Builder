@@ -96,7 +96,7 @@ export const PilotCard = ({
         <div>
           <Typography variant="subtitle1">{pilot.shipAbility?.name}</Typography>
           <Typography variant="caption">
-            {AbilityIconMap(pilot.shipAbility!.text)}
+            {AbilityIconMap(pilot.shipAbility?.text)}
           </Typography>
         </div>
         <div>
@@ -106,7 +106,7 @@ export const PilotCard = ({
         </div>
         <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
           {pilot.slots?.map((s) => (
-            <XIcon type="font" icon={s} />
+            <XIcon type="font" icon={s.split(" ").join("").toLowerCase()} />
           ))}
         </div>
       </CardContent>
