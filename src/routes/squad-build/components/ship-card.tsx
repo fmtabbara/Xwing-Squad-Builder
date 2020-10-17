@@ -5,12 +5,12 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Grid,
   makeStyles,
   Typography,
 } from "@material-ui/core"
 import { XIcon } from "../../../components/Icon"
 import { AbilityIconMap } from "../../../utils"
+import { ShipStats } from "../../../components/ship-stats"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -61,6 +61,7 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
             <XIcon type="font" icon={a.type} />
           ))}
         </div>
+        <ShipStats stats={ship.stats} />
       </CardContent>
     </Card>
   )

@@ -27,6 +27,13 @@ enum EnumActionType {
   "Rotate Arc" = "Rotate Arc",
 }
 
+export enum EnumShipStatsTypes {
+  attack = "attack",
+  agility = "agility",
+  hull = "hull",
+  shields = "shields",
+}
+
 export type TShip = {
   actions: Array<{ difficulty: EnumActionDifficulty; type: EnumActionType }>
   faction: EnumFactionNames
@@ -35,7 +42,11 @@ export type TShip = {
   name: string
   pilots: Array<TPilot>
   size: EnumShipSize
-  stats: any[] // Needs populating
+  stats: Array<{
+    arc?: string
+    type: EnumShipStatsTypes
+    value: number
+  }>
   xws: string
 }
 

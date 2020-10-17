@@ -9,7 +9,7 @@ import { PilotList } from "./components/pilot-list"
 import { useTheme } from "@material-ui/styles"
 
 export const SquadBuild = () => {
-  const { faction, ship, closePilotsList, resetSquad } = useContext(AppContext)
+  const { faction, ship, resetSquad } = useContext(AppContext)
 
   const location = useLocation()
   const history = useHistory()
