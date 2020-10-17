@@ -18,6 +18,9 @@ const useCardStyle = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
+  actions: {
+    margin: theme.spacing(0, 0.5),
+  },
 }))
 
 export const ShipCard = ({ ship }: { ship: TShip }) => {
@@ -41,6 +44,7 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
             textTransform: "uppercase",
           },
         }}
+        action={<ShipStats stats={ship.stats} />}
       />
       <CardContent>
         <div>
@@ -58,10 +62,11 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
         </div>
         <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
           {ship.actions.map((a) => (
-            <XIcon type="font" icon={a.type} />
+            <div className={classes.actions}>
+              <XIcon type="font" icon={a.type} />
+            </div>
           ))}
         </div>
-        <ShipStats stats={ship.stats} />
       </CardContent>
     </Card>
   )

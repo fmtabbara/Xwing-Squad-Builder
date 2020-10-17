@@ -64,7 +64,7 @@ const Faction = ({
     <Button
       size="small"
       variant="text"
-      startIcon={<FactionIcon icon={faction.icon} xws={faction.xws} />}
+      startIcon={<FactionIcon icon={faction.icon} xws={faction.xws} small />}
       onClick={() => onSelect(faction)}
       style={{ padding: 16 }}
     >

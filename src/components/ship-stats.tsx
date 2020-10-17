@@ -16,15 +16,15 @@ export const ShipStats = ({ stats }: { stats: TShip["stats"] }) => {
   const colorMap: any = {
     [EnumShipStatsTypes.agility]: theme.palette.success.light,
     [EnumShipStatsTypes.attack]: theme.palette.error.main,
-    [EnumShipStatsTypes.hull]: "yellow",
+    [EnumShipStatsTypes.hull]: "#d4d465",
     [EnumShipStatsTypes.shields]: theme.palette.info.main,
   }
 
   return (
-    <List dense disablePadding>
+    <List dense disablePadding style={{ display: "flex" }}>
       {stats.map((a) => (
-        <ListItem>
-          <ListItemIcon>
+        <ListItem style={{ padding: 0, margin: theme.spacing(0, 0.5) }}>
+          <ListItemIcon style={{ margin: theme.spacing(0, 0.5), minWidth: 0 }}>
             <XIcon
               type="font"
               icon={`${a.arc ? a.arc : a.type}`}
