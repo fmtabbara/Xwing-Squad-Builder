@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Xwing-Squad-Builder/static/css/main.30587ca8.chunk.css",
-    "main.js": "/Xwing-Squad-Builder/static/js/main.60b6987f.chunk.js",
-    "main.js.map": "/Xwing-Squad-Builder/static/js/main.60b6987f.chunk.js.map",
+    "main.css": "/Xwing-Squad-Builder/static/css/main.69f96ec7.chunk.css",
+    "main.js": "/Xwing-Squad-Builder/static/js/main.b6c58952.chunk.js",
+    "main.js.map": "/Xwing-Squad-Builder/static/js/main.b6c58952.chunk.js.map",
     "runtime-main.js": "/Xwing-Squad-Builder/static/js/runtime-main.31679df9.js",
     "runtime-main.js.map": "/Xwing-Squad-Builder/static/js/runtime-main.31679df9.js.map",
-    "static/js/2.db9c3dbd.chunk.js": "/Xwing-Squad-Builder/static/js/2.db9c3dbd.chunk.js",
-    "static/js/2.db9c3dbd.chunk.js.map": "/Xwing-Squad-Builder/static/js/2.db9c3dbd.chunk.js.map",
+    "static/js/2.d62d14b0.chunk.js": "/Xwing-Squad-Builder/static/js/2.d62d14b0.chunk.js",
+    "static/js/2.d62d14b0.chunk.js.map": "/Xwing-Squad-Builder/static/js/2.d62d14b0.chunk.js.map",
     "index.html": "/Xwing-Squad-Builder/index.html",
-    "precache-manifest.ef8ec04c305effb017d2428120c36477.js": "/Xwing-Squad-Builder/precache-manifest.ef8ec04c305effb017d2428120c36477.js",
+    "precache-manifest.a9c8fcba81061c6196d0ff311040edda.js": "/Xwing-Squad-Builder/precache-manifest.a9c8fcba81061c6196d0ff311040edda.js",
     "service-worker.js": "/Xwing-Squad-Builder/service-worker.js",
-    "static/css/main.30587ca8.chunk.css.map": "/Xwing-Squad-Builder/static/css/main.30587ca8.chunk.css.map",
-    "static/js/2.db9c3dbd.chunk.js.LICENSE.txt": "/Xwing-Squad-Builder/static/js/2.db9c3dbd.chunk.js.LICENSE.txt",
+    "static/css/main.69f96ec7.chunk.css.map": "/Xwing-Squad-Builder/static/css/main.69f96ec7.chunk.css.map",
+    "static/js/2.d62d14b0.chunk.js.LICENSE.txt": "/Xwing-Squad-Builder/static/js/2.d62d14b0.chunk.js.LICENSE.txt",
     "static/media/SWZ01_logo.png": "/Xwing-Squad-Builder/static/media/SWZ01_logo.19be28cc.png",
     "static/media/xwing-miniatures.css": "/Xwing-Squad-Builder/static/media/xwing-miniatures.f9e5ad11.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.31679df9.js",
-    "static/js/2.db9c3dbd.chunk.js",
-    "static/css/main.30587ca8.chunk.css",
-    "static/js/main.60b6987f.chunk.js"
+    "static/js/2.d62d14b0.chunk.js",
+    "static/css/main.69f96ec7.chunk.css",
+    "static/js/main.b6c58952.chunk.js"
   ]
 }
