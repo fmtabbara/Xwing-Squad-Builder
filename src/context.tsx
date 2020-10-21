@@ -65,7 +65,10 @@ export type TPilot = {
   shipAbility: { name: string; text: string } | undefined
   slots?: string[]
   xws: string
-  shipXWS?: string
+  ship?: {
+    xws: string
+    dial: string[]
+  }
 }
 
 export type TFaction = {
@@ -104,7 +107,7 @@ interface IAppContext {
   setFaction: React.Dispatch<SetStateAction<TFaction | undefined>>
   showPilotsList: (ship: any) => void
   closePilotsList: () => void
-  addSquadPilot: (pilot: TPilot, shipXWS: TShip["xws"]) => void
+  addSquadPilot: (pilot: TPilot, ship: { xws: string; dial: string[] }) => void
   removeSquadPilot: (pilotName: TPilot["name"]) => void
   resetSquad: () => void
 }
@@ -127,8 +130,11 @@ export const AppContextProvider = ({
   const showPilotsList = (ship: any) => setShip(ship)
   const closePilotsList = () => setShip(undefined)
 
-  const addSquadPilot = (pilot: TPilot, shipXWS: TShip["xws"]) => {
-    setSquad((s) => [...s, { ...pilot, shipXWS }])
+  const addSquadPilot = (
+    pilot: TPilot,
+    ship: { xws: string; dial: string[] }
+  ) => {
+    setSquad((s) => [...s, { ...pilot, ship }])
     closePilotsList()
   }
 

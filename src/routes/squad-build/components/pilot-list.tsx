@@ -47,11 +47,15 @@ export const PilotList = ({
 
   const { addSquadPilot, closePilotsList } = useContext(AppContext)
 
-  const onAddPilot = (shipWXS: TShip["xws"]) => (pilot: TPilot) => {
-    addSquadPilot(pilot, shipWXS)
+  const onAddPilot = (ship: { xws: string; dial: string[] }) => (
+    pilot: TPilot
+  ) => {
+    addSquadPilot(pilot, ship)
     closeShipList()
   }
-  const partialAddPilot = onAddPilot(ship?.xws!)
+  const partialAddPilot = ship
+    ? onAddPilot({ xws: ship.xws, dial: ship.dial })
+    : undefined
 
   return (
     <Dialog

@@ -12,6 +12,7 @@ import { TPilot } from "../../../context"
 import { XIcon } from "../../../components/Icon"
 import CloseIcon from "@material-ui/icons/Close"
 import { AbilityIconMap } from "../../../utils"
+import { Manuevers } from "../../../components/dial-map"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -88,11 +89,8 @@ export const PilotCard = ({
         }
       />
       <CardContent>
-        {pilot.shipXWS && (
-          <div>
-            <XIcon type="ship" icon={pilot.shipXWS} size="lg" />
-          </div>
-        )}
+        {pilot.ship && <XIcon type="ship" icon={pilot.ship.xws} size="lg" />}
+        {pilot.ship && <Manuevers dial={pilot.ship.dial} />}
         <div>
           <Typography variant="subtitle1">{pilot.shipAbility?.name}</Typography>
           <Typography variant="caption">
