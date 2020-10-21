@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react"
 import { Redirect, useHistory, useLocation } from "react-router-dom"
+import { useTheme } from "@material-ui/styles"
 import { Button, Grid, Theme } from "@material-ui/core"
 import { ShipList } from "./components/ship-list"
 import { Page } from "../../components/page"
-import { AppContext } from "../../context"
 import { BuilderCard } from "./components/builder-card"
 import { PilotList } from "./components/pilot-list"
-import { useTheme } from "@material-ui/styles"
+import { AppContext } from "../../context"
 
 export const SquadBuild = () => {
   const { faction, ship, resetSquad } = useContext(AppContext)
@@ -52,7 +52,6 @@ export const SquadBuild = () => {
               >
                 Factions
               </Button>
-
               <Button onClick={() => setDisplayShipList(true)}>Ships</Button>
             </div>
           </Grid>

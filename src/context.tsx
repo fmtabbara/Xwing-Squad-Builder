@@ -36,6 +36,7 @@ export enum EnumShipStatsTypes {
 
 export type TShip = {
   actions: Array<{ difficulty: EnumActionDifficulty; type: EnumActionType }>
+  dial: string[]
   faction: EnumFactionNames
   ffg: number
   icon: string

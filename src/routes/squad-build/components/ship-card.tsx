@@ -11,6 +11,7 @@ import {
 import { XIcon } from "../../../components/Icon"
 import { AbilityIconMap } from "../../../utils"
 import { ShipStats } from "../../../components/ship-stats"
+import { Manuevers } from "../../../components/dial-map"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -49,6 +50,9 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
       <CardContent>
         <div>
           <XIcon type="ship" icon={ship.xws} size="lg" />
+        </div>
+        <div>
+          <Manuevers dial={ship.dial} />
         </div>
         <div>
           <Typography variant="subtitle1">
