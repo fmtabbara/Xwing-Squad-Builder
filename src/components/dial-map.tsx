@@ -38,23 +38,31 @@ export const Manuevers = ({ dial }: { dial: string[] }) => {
   }
 
   return (
-    <div>
+    <>
       {Object.keys(translateDials).map((k: string) => {
         return (
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", width: 275 }}>
             <Typography>{k}</Typography>
-            {translateDials[k].map((d: string) => {
-              return (
-                <XIcon
-                  type="font"
-                  icon={maneuverMap[d[0]]}
-                  color={colorMap[d[1]]}
-                />
-              )
-            })}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexBasis: "100%",
+              }}
+            >
+              {translateDials[k].map((d: string) => {
+                return (
+                  <XIcon
+                    type="font"
+                    icon={maneuverMap[d[0]]}
+                    color={colorMap[d[1]]}
+                  />
+                )
+              })}
+            </div>
           </div>
         )
       })}
-    </div>
+    </>
   )
 }
