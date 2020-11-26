@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core"
 import { useTheme } from "@material-ui/styles"
 import React from "react"
-import { EnumShipStatsTypes, TShip } from "../context"
+import { EnumShipStatsTypes, TShip } from "../types"
 import { XIcon } from "./Icon"
 
 export const ShipStats = ({ stats }: { stats: TShip["stats"] }) => {
@@ -22,8 +22,11 @@ export const ShipStats = ({ stats }: { stats: TShip["stats"] }) => {
 
   return (
     <List dense disablePadding style={{ display: "flex" }}>
-      {stats.map((a) => (
-        <ListItem style={{ padding: 0, margin: theme.spacing(0, 0.5) }}>
+      {stats.map((a, index) => (
+        <ListItem
+          style={{ padding: 0, margin: theme.spacing(0, 0.5) }}
+          key={index}
+        >
           <ListItemIcon style={{ margin: theme.spacing(0, 0.5), minWidth: 0 }}>
             <XIcon
               type="font"

@@ -8,11 +8,12 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core"
-import { TPilot } from "../../../context"
 import { XIcon } from "../../../components/Icon"
 import CloseIcon from "@material-ui/icons/Close"
 import { AbilityIconMap } from "../../../utils"
 import { Manuevers } from "../../../components/dial-map"
+import { Upgrades } from "../../../components/upgrades"
+import { TPilot } from "../../../types"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -89,7 +90,7 @@ export const PilotCard = ({
         }
       />
       <CardContent>
-        {pilot.ship && <XIcon type="ship" icon={pilot.ship.xws} size="lg" />}
+        {pilot.ship && <XIcon type="ship" icon={pilot.ship.xws} />}
         {pilot.ship && <Manuevers dial={pilot.ship.dial} />}
         <div>
           <Typography variant="subtitle1">{pilot.shipAbility?.name}</Typography>
@@ -103,9 +104,7 @@ export const PilotCard = ({
           </Typography>
         </div>
         <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
-          {pilot.slots?.map((s) => (
-            <XIcon type="font" icon={s.split(" ").join("").toLowerCase()} />
-          ))}
+          <Upgrades upgrades={pilot.slots} />
         </div>
       </CardContent>
     </Card>

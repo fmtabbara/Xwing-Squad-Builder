@@ -4,7 +4,7 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import Slide from "@material-ui/core/Slide"
 import { TransitionProps } from "@material-ui/core/transitions"
-import { AppContext, TPilot, TShip } from "../../../context"
+import { AppContext } from "../../../context"
 import { PilotCard } from "./pilot-card"
 import {
   Button,
@@ -16,6 +16,7 @@ import {
 import { XIcon } from "../../../components/Icon"
 import { makeStyles } from "@material-ui/styles"
 import { useIsMobile } from "../../../hooks/useIsMobile"
+import { TPilot, TShip } from "../../../types"
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -83,8 +84,8 @@ export const PilotList = ({
       </DialogTitle>
       <DialogContent dividers>
         <Grid container spacing={2} direction="column">
-          {ship?.pilots.map((p) => (
-            <Grid item xs={12}>
+          {ship?.pilots.map((p, index) => (
+            <Grid item xs={12} key={index}>
               <PilotCard pilot={p} onAddPilot={partialAddPilot} />
             </Grid>
           ))}

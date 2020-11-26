@@ -1,24 +1,25 @@
-import { Typography } from "@material-ui/core";
-import React, { useContext } from "react";
-import { AppContext, EnumFactionXWS } from "../context";
-import { TextWithButton } from "./text-with-button";
+import { Typography } from "@material-ui/core"
+import React, { useContext } from "react"
+import { AppContext } from "../context"
+import { EnumFactionXWS } from "../types"
+import { TextWithButton } from "./text-with-button"
 
 const withBlackBg = [
   EnumFactionXWS.scumandvillainy,
   EnumFactionXWS.galacticempire,
   EnumFactionXWS.galacticrepublic,
-];
+]
 
 export const FactionIcon = ({
   icon,
   xws,
   small,
 }: {
-  icon: string;
-  xws: EnumFactionXWS;
-  small?: boolean;
+  icon: string
+  xws: EnumFactionXWS
+  small?: boolean
 }) => {
-  const blackBg = withBlackBg.includes(xws);
+  const blackBg = withBlackBg.includes(xws)
   return (
     <img
       src={icon}
@@ -31,11 +32,11 @@ export const FactionIcon = ({
         borderRadius: 30,
       }}
     />
-  );
-};
+  )
+}
 
 export const FactionLabel = ({ small }: { small?: boolean }) => {
-  const { faction } = useContext(AppContext);
+  const { faction } = useContext(AppContext)
   if (faction) {
     return (
       <TextWithButton>
@@ -49,7 +50,7 @@ export const FactionLabel = ({ small }: { small?: boolean }) => {
           {faction.name.toUpperCase()}
         </Typography>
       </TextWithButton>
-    );
+    )
   }
-  return <></>;
-};
+  return <></>
+}

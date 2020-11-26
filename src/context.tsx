@@ -1,102 +1,6 @@
 import React, { createContext, SetStateAction, useState } from "react"
 import { useRequest } from "./hooks/useRequest"
-
-enum EnumShipSize {
-  Small = "Small",
-  Medium = "Medium",
-  Large = "Large",
-}
-
-enum EnumActionDifficulty {
-  White = "White",
-  Red = "Red",
-}
-
-enum EnumActionType {
-  Focus = "Focus",
-  Reinforce = "Reinforce",
-  Lock = "Lock",
-  "Barrel Roll" = "Barrel Roll",
-  Evade = "Evade",
-  Cloak = "Cloak",
-  Coordinate = "Coordinate",
-  Calculate = "Calculate",
-  Jam = "Jam",
-  Reload = "Reload",
-  Slam = "Slam",
-  "Rotate Arc" = "Rotate Arc",
-}
-
-export enum EnumShipStatsTypes {
-  attack = "attack",
-  agility = "agility",
-  hull = "hull",
-  shields = "shields",
-}
-
-export type TShip = {
-  actions: Array<{ difficulty: EnumActionDifficulty; type: EnumActionType }>
-  dial: string[]
-  faction: EnumFactionNames
-  ffg: number
-  icon: string
-  name: string
-  pilots: Array<TPilot>
-  size: EnumShipSize
-  stats: Array<{
-    arc?: string
-    type: EnumShipStatsTypes
-    value: number
-  }>
-  xws: string
-}
-
-export type TPilot = {
-  artwork: string
-  ability: string
-  caption: string
-  cost: number | undefined
-  ffg: number
-  hyperspace: boolean
-  image: string
-  initiative: number
-  limited: number
-  name: string
-  shipAbility: { name: string; text: string } | undefined
-  slots?: string[]
-  xws: string
-  ship?: {
-    xws: string
-    dial: string[]
-  }
-}
-
-export type TFaction = {
-  name: string
-  ffg: number
-  icon: string
-  xws: EnumFactionXWS
-}
-
-export enum EnumFactionXWS {
-  rebelalliance = "rebelalliance",
-  galacticempire = "galacticempire",
-  scumandvillainy = "scumandvillainy",
-  resistance = "resistance",
-  firstorder = "firstorder",
-  galacticrepublic = "galacticrepublic",
-  separatistalliance = "separatistalliance",
-}
-
-enum EnumFactionNames {
-  "Rebel Alliance" = "Rebel Alliance",
-  "Galactic Empire" = "Galactic Empire",
-  "Scum and Villainy" = "Scum and Villainy",
-  "Resistance" = "Resistance",
-  "First Order" = "First Order",
-  "Galactic Republic" = "Galactic Republic",
-  "Separatist Alliance" = "Separatist Alliance",
-}
+import { TFaction, TPilot, TShip } from "./types"
 
 interface IAppContext {
   manifestUrlsLoading: boolean
@@ -110,6 +14,8 @@ interface IAppContext {
   addSquadPilot: (pilot: TPilot, ship: { xws: string; dial: string[] }) => void
   removeSquadPilot: (pilotName: TPilot["name"]) => void
   resetSquad: () => void
+  upgrade: string | undefined
+  setUpgrade: React.Dispatch<SetStateAction<string | undefined>>
 }
 
 export const AppContext = createContext({} as IAppContext)
@@ -122,6 +28,7 @@ export const AppContextProvider = ({
   const [faction, setFaction] = useState<TFaction | undefined>()
   const [ship, setShip] = useState<TShip>()
   const [squad, setSquad] = useState<TPilot[]>([])
+  const [upgrade, setUpgrade] = useState<string>()
 
   const { data: manifestUrls, isLoading: manifestUrlsLoading } = useRequest(
     "manifest.json"
@@ -157,6 +64,8 @@ export const AppContextProvider = ({
         addSquadPilot,
         removeSquadPilot,
         resetSquad,
+        upgrade,
+        setUpgrade,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 
-import { AppContext, TShip } from "../../../context"
+import { AppContext } from "../../../context"
 import {
   Card,
   CardContent,
@@ -12,6 +12,7 @@ import { XIcon } from "../../../components/Icon"
 import { AbilityIconMap } from "../../../utils"
 import { ShipStats } from "../../../components/ship-stats"
 import { Manuevers } from "../../../components/dial-map"
+import { TShip } from "../../../types"
 
 const useCardStyle = makeStyles((theme) => ({
   root: {
@@ -65,8 +66,8 @@ export const ShipCard = ({ ship }: { ship: TShip }) => {
           )}
         </div>
         <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
-          {ship.actions.map((a) => (
-            <div className={classes.actions}>
+          {ship.actions.map((a, index) => (
+            <div className={classes.actions} key={index}>
               <XIcon type="font" icon={a.type} />
             </div>
           ))}

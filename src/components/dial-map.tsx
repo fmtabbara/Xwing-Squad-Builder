@@ -39,9 +39,9 @@ export const Manuevers = ({ dial }: { dial: string[] }) => {
 
   return (
     <>
-      {Object.keys(translateDials).map((k: string) => {
+      {Object.keys(translateDials).map((k: string, index) => {
         return (
-          <div style={{ display: "flex", width: 275 }}>
+          <div style={{ display: "flex", width: 275 }} key={index}>
             <Typography>{k}</Typography>
             <div
               style={{
@@ -50,9 +50,10 @@ export const Manuevers = ({ dial }: { dial: string[] }) => {
                 flexBasis: "100%",
               }}
             >
-              {translateDials[k].map((d: string) => {
+              {translateDials[k].map((d: string, index: number) => {
                 return (
                   <XIcon
+                    key={index}
                     type="font"
                     icon={maneuverMap[d[0]]}
                     color={colorMap[d[1]]}

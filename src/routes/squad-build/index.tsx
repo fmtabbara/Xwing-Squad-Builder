@@ -7,9 +7,10 @@ import { Page } from "../../components/page"
 import { BuilderCard } from "./components/builder-card"
 import { PilotList } from "./components/pilot-list"
 import { AppContext } from "../../context"
+import { UpgradeList } from "../../components/upgrades"
 
 export const SquadBuild = () => {
-  const { faction, ship, resetSquad } = useContext(AppContext)
+  const { faction, ship, resetSquad, upgrade } = useContext(AppContext)
 
   const location = useLocation()
   const history = useHistory()
@@ -34,7 +35,9 @@ export const SquadBuild = () => {
           ship={ship}
           closeShipList={() => setDisplayShipList(false)}
         />
-
+        {upgrade && (
+          <UpgradeList open={upgrade ? true : false} upgrade={upgrade} />
+        )}
         <Grid
           container
           direction="column"

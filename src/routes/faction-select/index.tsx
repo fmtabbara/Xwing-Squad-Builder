@@ -2,9 +2,10 @@ import React, { useContext } from "react"
 import { Page } from "../../components/page"
 import { Button, Grid, Typography } from "@material-ui/core"
 import { useRequest } from "../../hooks/useRequest"
-import { AppContext, TFaction } from "../../context"
+import { AppContext } from "../../context"
 import { useHistory, useLocation } from "react-router-dom"
 import { FactionIcon } from "../../components/faction-icon"
+import { TFaction } from "../../types"
 
 export const FactionSelect = () => {
   const {

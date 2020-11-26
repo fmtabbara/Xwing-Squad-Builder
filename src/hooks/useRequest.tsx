@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 const toJson = (data: any) => data.json()
 
 export const useRequest = (url: string, opts?: {}) => {
-  const [data, setData] = useState()
+  const [data, setData] = useState<any>()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
 

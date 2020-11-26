@@ -11,13 +11,13 @@ import {
   DialogActions,
   Grid,
   Theme,
-  Typography,
 } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/styles"
-import { AppContext, TShip } from "../../../context"
+import { AppContext } from "../../../context"
 import { ShipCard } from "./ship-card"
 import { useIsMobile } from "../../../hooks/useIsMobile"
+import { TShip } from "../../../types"
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -83,13 +83,11 @@ export const ShipList = ({
       <DialogTitle className={classes.title}>Select Ship</DialogTitle>
       <DialogContent dividers>
         <Grid container spacing={2} direction="column">
-          {ships.map((s) => {
-            return (
-              <Grid item xs={12}>
-                <ShipCard ship={s} />
-              </Grid>
-            )
-          })}
+          {ships.map((s, index) => (
+            <Grid item xs={12} key={index}>
+              <ShipCard ship={s} />
+            </Grid>
+          ))}
         </Grid>
       </DialogContent>
       <DialogActions>
