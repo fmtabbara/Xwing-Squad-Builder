@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b54bff48123751413c963274cd2ca0c0",
+    "revision": "01162ca49339bd4b9a1c39dfb4859a37",
     "url": "/Xwing-Squad-Builder/index.html"
   },
   {
-    "revision": "e23113c35f8e1dedd776",
+    "revision": "c8f73f4e1fc726218feb",
     "url": "/Xwing-Squad-Builder/static/css/main.69f96ec7.chunk.css"
   },
   {
-    "revision": "7bb4dfa39e29aa9e77cb",
-    "url": "/Xwing-Squad-Builder/static/js/2.d62d14b0.chunk.js"
+    "revision": "76f0e5466ff4d3881d03",
+    "url": "/Xwing-Squad-Builder/static/js/2.ea104148.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/Xwing-Squad-Builder/static/js/2.d62d14b0.chunk.js.LICENSE.txt"
+    "url": "/Xwing-Squad-Builder/static/js/2.ea104148.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e23113c35f8e1dedd776",
-    "url": "/Xwing-Squad-Builder/static/js/main.b6c58952.chunk.js"
+    "revision": "c8f73f4e1fc726218feb",
+    "url": "/Xwing-Squad-Builder/static/js/main.c7e70bc4.chunk.js"
   },
   {
     "revision": "42270e740fa34c5e0f31",
